@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Restaurant_Manager_4.Controllers
@@ -25,6 +22,13 @@ namespace Restaurant_Manager_4.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+
+        [OutputCache(Duration = 15)]
+        public string GetTime()
+        {
+            return DateTime.Now.ToString("T");
         }
     }
 }
