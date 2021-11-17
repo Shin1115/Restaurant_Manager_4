@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\DanhMucMonAnController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -136,6 +137,7 @@
     <Compile Include="Models\ban.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaoCaoThongKe.cs" />
     <Compile Include="Models\chi_tiet_danh_muc.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -251,10 +253,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\DanhMucMonAn\DanhSach.cshtml" />
+    <Content Include="Views\BaoCao\Index.cshtml" />
+    <Content Include="Views\BaoCao\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DanhMucMonAn\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
