@@ -23,7 +23,7 @@ namespace Restaurant_Manager_4.Controllers
 
             return View();
         }
-        public ActionResult Product_Detail()
+        public ActionResult Produtc_Detail()
         {
             return View();
         }
