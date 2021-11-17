@@ -11,20 +11,32 @@ namespace Restaurant_Manager_4.Controllers
             return "Danh Muc Mon An";
         }
 
-        public String List()
+        /// <summary>
+        /// Hiển thị danh sách các món ăn có trong danh mục.
+        /// </summary>
+        /// <returns></returns>
+        [ActionName("DanhSach")]
+        public ActionResult List()
         {
-            return @"<ul>
-              <li>Ali Raza</li>
-              <li>Mark Upston</li>
-              <li>Allan Bommer</li>
-              <li>Greg Jerry</li>
-           </ul>";
+            return View();
         }
 
+        /// <summary>
+        /// Hiển thị chi tiết của một món ăn có trong danh mục.
+        /// </summary>
+        /// <param name="TenMonAn"></param>
+        /// <returns></returns>
+        [ActionName("ChiTiet")]
         public ActionResult Detail(string TenMonAn)
         {
             var input = Server.HtmlDecode(TenMonAn);
             return Content(input);
+        }
+
+        [NonAction]
+        public string DoSomethingRelativeController()
+        {
+            return "Làm gì đó liên quan đến nghiệp vụ controller";
         }
     }
 }
