@@ -1,0 +1,1285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="quan_ly_nha_hangModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten_ban" Type="varchar" MaxLength="255" />
+          <Property Name="cho_ngoi_toi_da" Type="int" />
+          <Property Name="trang_thai" Type="int" />
+          <Property Name="dat_coc_toi_thieu" Type="int" />
+          <Property Name="hinh_anh" Type="nvarchar" MaxLength="500" />
+          <Property Name="mo_ta" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="chi_tiet_danh_muc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_danh_muc" Type="int" />
+          <Property Name="id_mon_an" Type="int" />
+        </EntityType>
+        <EntityType Name="chi_tiet_dat_ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_dat_ban" Type="int" />
+          <Property Name="id_ban" Type="int" />
+        </EntityType>
+        <EntityType Name="chi_tiet_dat_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_mon_an" Type="int" />
+          <Property Name="id_dat_hang" Type="int" />
+          <Property Name="so_luong" Type="int" />
+        </EntityType>
+        <EntityType Name="chi_tiet_hoa_don">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nhan_vien" Type="int" />
+          <Property Name="id_mon_an" Type="int" />
+          <Property Name="id_hoa_don" Type="int" />
+          <Property Name="so_luong" Type="int" />
+        </EntityType>
+        <EntityType Name="chi_tiet_khuyen_mai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_khuyen_mai" Type="int" />
+          <Property Name="id_mon_an" Type="int" />
+        </EntityType>
+        <EntityType Name="danh_gia_khach_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nguoi_danh_gia" Type="int" />
+          <Property Name="id_mon_an" Type="int" />
+          <Property Name="noi_dung" Type="nvarchar" MaxLength="255" />
+          <Property Name="sao" Type="int" />
+        </EntityType>
+        <EntityType Name="danh_muc_mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten_danh_muc" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="dat_ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nguoi_dat" Type="int" />
+          <Property Name="id_nhan_vien" Type="int" />
+          <Property Name="ngay_dat" Type="datetime" />
+          <Property Name="tien_coc_truoc" Type="int" />
+          <Property Name="ngay_den" Type="datetime" />
+          <Property Name="so_luong_nguoi" Type="int" />
+          <Property Name="trang_thai" Type="int" />
+        </EntityType>
+        <EntityType Name="dat_ban_mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_dat_ban" Type="int" />
+          <Property Name="id_mon_an" Type="int" />
+        </EntityType>
+        <EntityType Name="dat_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nguoi_dat" Type="int" />
+          <Property Name="id_nhan_vien" Type="int" />
+          <Property Name="ngay_dat" Type="datetime" />
+          <Property Name="tien_coc_truoc" Type="int" />
+          <Property Name="trang_thai" Type="int" />
+        </EntityType>
+        <EntityType Name="hoa_don">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_nguoi_dung" Type="int" />
+          <Property Name="ngay_tao" Type="datetime" />
+          <Property Name="trang_thai" Type="int" />
+        </EntityType>
+        <EntityType Name="khuyen_mai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten_dot_khuyen_mai" Type="nvarchar" MaxLength="255" />
+          <Property Name="bat_dau" Type="datetime" />
+          <Property Name="ket_thuc" Type="datetime" />
+          <Property Name="phan_tram_giam" Type="int" />
+        </EntityType>
+        <EntityType Name="mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten_mon_an" Type="nvarchar" MaxLength="255" />
+          <Property Name="gia" Type="int" />
+          <Property Name="ngay_them" Type="datetime" />
+          <Property Name="ngay_sua" Type="datetime" />
+          <Property Name="trang_thai" Type="int" />
+          <Property Name="hinh_anh" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tin_tuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngay_viet" Type="datetime" />
+          <Property Name="tieu_de" Type="nvarchar" MaxLength="255" />
+          <Property Name="noi_dung" Type="nvarchar(max)" />
+          <Property Name="id_nguoi_viet" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten_nguoi_dung" Type="varchar" MaxLength="255" />
+          <Property Name="mat_khau" Type="varchar" MaxLength="255" />
+          <Property Name="dia_chi" Type="nvarchar" MaxLength="255" />
+          <Property Name="so_dien_thoai" Type="varchar" MaxLength="10" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+          <Property Name="vai_tro" Type="int" />
+          <Property Name="trang_thai" Type="int" />
+          <Property Name="hinh_anh" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__chi_tiet___id_ba__4E88ABD4">
+          <End Role="ban" Type="Self.ban" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_ban">
+              <PropertyRef Name="id_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__4AB81AF0">
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_hang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_hang">
+              <PropertyRef Name="id_dat_hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__4D94879B">
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_ban">
+              <PropertyRef Name="id_dat_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__5535A963">
+          <End Role="danh_muc_mon_an" Type="Self.danh_muc_mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danh_muc_mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_danh_muc">
+              <PropertyRef Name="id_danh_muc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_ho__5441852A">
+          <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hoa_don">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_hoa_don" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_kh__571DF1D5">
+          <End Role="khuyen_mai" Type="Self.khuyen_mai" Multiplicity="0..1" />
+          <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khuyen_mai">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_khuyen_mai">
+              <PropertyRef Name="id_khuyen_mai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__49C3F6B7">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_hang">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__534D60F1">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__5629CD9C">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_danh_muc">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__5812160E">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_khuyen_mai">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_nh__52593CB8">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__danh_gia___id_mo__5070F446">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danh_gia_khach_hang">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__danh_gia___id_ng__4F7CD00D">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danh_gia_khach_hang">
+              <PropertyRef Name="id_nguoi_danh_gia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban__id_nguo__4BAC3F29">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban">
+              <PropertyRef Name="id_nguoi_dat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban__id_nhan__4CA06362">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban_m__id_da__59063A47">
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
+          <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban_mon_an">
+              <PropertyRef Name="id_dat_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban_m__id_mo__59FA5E80">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban_mon_an">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_hang__id_ngu__47DBAE45">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_hang">
+              <PropertyRef Name="id_nguoi_dat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_hang__id_nha__48CFD27E">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_hang">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoa_don__id_nguo__5165187F">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="hoa_don">
+              <PropertyRef Name="id_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tin_tuc__id_nguo__46E78A0C">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="tin_tuc" Type="Self.tin_tuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tin_tuc">
+              <PropertyRef Name="id_nguoi_viet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="quan_ly_nha_hangModelStoreContainer">
+          <EntitySet Name="ban" EntityType="Self.ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chi_tiet_danh_muc" EntityType="Self.chi_tiet_danh_muc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chi_tiet_dat_ban" EntityType="Self.chi_tiet_dat_ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chi_tiet_dat_hang" EntityType="Self.chi_tiet_dat_hang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chi_tiet_hoa_don" EntityType="Self.chi_tiet_hoa_don" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chi_tiet_khuyen_mai" EntityType="Self.chi_tiet_khuyen_mai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="danh_gia_khach_hang" EntityType="Self.danh_gia_khach_hang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="danh_muc_mon_an" EntityType="Self.danh_muc_mon_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dat_ban" EntityType="Self.dat_ban" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dat_ban_mon_an" EntityType="Self.dat_ban_mon_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dat_hang" EntityType="Self.dat_hang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hoa_don" EntityType="Self.hoa_don" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khuyen_mai" EntityType="Self.khuyen_mai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mon_an" EntityType="Self.mon_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tin_tuc" EntityType="Self.tin_tuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__chi_tiet___id_ba__4E88ABD4" Association="Self.FK__chi_tiet___id_ba__4E88ABD4">
+            <End Role="ban" EntitySet="ban" />
+            <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__4AB81AF0" Association="Self.FK__chi_tiet___id_da__4AB81AF0">
+            <End Role="dat_hang" EntitySet="dat_hang" />
+            <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__4D94879B" Association="Self.FK__chi_tiet___id_da__4D94879B">
+            <End Role="dat_ban" EntitySet="dat_ban" />
+            <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__5535A963" Association="Self.FK__chi_tiet___id_da__5535A963">
+            <End Role="danh_muc_mon_an" EntitySet="danh_muc_mon_an" />
+            <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_ho__5441852A" Association="Self.FK__chi_tiet___id_ho__5441852A">
+            <End Role="hoa_don" EntitySet="hoa_don" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_kh__571DF1D5" Association="Self.FK__chi_tiet___id_kh__571DF1D5">
+            <End Role="khuyen_mai" EntitySet="khuyen_mai" />
+            <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__49C3F6B7" Association="Self.FK__chi_tiet___id_mo__49C3F6B7">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__534D60F1" Association="Self.FK__chi_tiet___id_mo__534D60F1">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__5629CD9C" Association="Self.FK__chi_tiet___id_mo__5629CD9C">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__5812160E" Association="Self.FK__chi_tiet___id_mo__5812160E">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_nh__52593CB8" Association="Self.FK__chi_tiet___id_nh__52593CB8">
+            <End Role="user" EntitySet="user" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__danh_gia___id_mo__5070F446" Association="Self.FK__danh_gia___id_mo__5070F446">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__danh_gia___id_ng__4F7CD00D" Association="Self.FK__danh_gia___id_ng__4F7CD00D">
+            <End Role="user" EntitySet="user" />
+            <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban__id_nguo__4BAC3F29" Association="Self.FK__dat_ban__id_nguo__4BAC3F29">
+            <End Role="user" EntitySet="user" />
+            <End Role="dat_ban" EntitySet="dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban__id_nhan__4CA06362" Association="Self.FK__dat_ban__id_nhan__4CA06362">
+            <End Role="user" EntitySet="user" />
+            <End Role="dat_ban" EntitySet="dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban_m__id_da__59063A47" Association="Self.FK__dat_ban_m__id_da__59063A47">
+            <End Role="dat_ban" EntitySet="dat_ban" />
+            <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban_m__id_mo__59FA5E80" Association="Self.FK__dat_ban_m__id_mo__59FA5E80">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_hang__id_ngu__47DBAE45" Association="Self.FK__dat_hang__id_ngu__47DBAE45">
+            <End Role="user" EntitySet="user" />
+            <End Role="dat_hang" EntitySet="dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_hang__id_nha__48CFD27E" Association="Self.FK__dat_hang__id_nha__48CFD27E">
+            <End Role="user" EntitySet="user" />
+            <End Role="dat_hang" EntitySet="dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoa_don__id_nguo__5165187F" Association="Self.FK__hoa_don__id_nguo__5165187F">
+            <End Role="user" EntitySet="user" />
+            <End Role="hoa_don" EntitySet="hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tin_tuc__id_nguo__46E78A0C" Association="Self.FK__tin_tuc__id_nguo__46E78A0C">
+            <End Role="user" EntitySet="user" />
+            <End Role="tin_tuc" EntitySet="tin_tuc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="quan_ly_nha_hangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_ban" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cho_ngoi_toi_da" Type="Int32" />
+          <Property Name="trang_thai" Type="Int32" />
+          <Property Name="dat_coc_toi_thieu" Type="Int32" />
+          <Property Name="hinh_anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mo_ta" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_ba__4E88ABD4" FromRole="ban" ToRole="chi_tiet_dat_ban" />
+        </EntityType>
+        <EntityType Name="chi_tiet_danh_muc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_danh_muc" Type="Int32" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <NavigationProperty Name="danh_muc_mon_an" Relationship="Self.FK__chi_tiet___id_da__5535A963" FromRole="chi_tiet_danh_muc" ToRole="danh_muc_mon_an" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__5629CD9C" FromRole="chi_tiet_danh_muc" ToRole="mon_an" />
+        </EntityType>
+        <EntityType Name="chi_tiet_dat_ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_dat_ban" Type="Int32" />
+          <Property Name="id_ban" Type="Int32" />
+          <NavigationProperty Name="ban" Relationship="Self.FK__chi_tiet___id_ba__4E88ABD4" FromRole="chi_tiet_dat_ban" ToRole="ban" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__chi_tiet___id_da__4D94879B" FromRole="chi_tiet_dat_ban" ToRole="dat_ban" />
+        </EntityType>
+        <EntityType Name="chi_tiet_dat_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <Property Name="id_dat_hang" Type="Int32" />
+          <Property Name="so_luong" Type="Int32" />
+          <NavigationProperty Name="dat_hang" Relationship="Self.FK__chi_tiet___id_da__4AB81AF0" FromRole="chi_tiet_dat_hang" ToRole="dat_hang" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__49C3F6B7" FromRole="chi_tiet_dat_hang" ToRole="mon_an" />
+        </EntityType>
+        <EntityType Name="chi_tiet_hoa_don">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nhan_vien" Type="Int32" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <Property Name="id_hoa_don" Type="Int32" />
+          <Property Name="so_luong" Type="Int32" />
+          <NavigationProperty Name="hoa_don" Relationship="Self.FK__chi_tiet___id_ho__5441852A" FromRole="chi_tiet_hoa_don" ToRole="hoa_don" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__534D60F1" FromRole="chi_tiet_hoa_don" ToRole="mon_an" />
+          <NavigationProperty Name="user" Relationship="Self.FK__chi_tiet___id_nh__52593CB8" FromRole="chi_tiet_hoa_don" ToRole="user" />
+        </EntityType>
+        <EntityType Name="chi_tiet_khuyen_mai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_khuyen_mai" Type="Int32" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <NavigationProperty Name="khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__571DF1D5" FromRole="chi_tiet_khuyen_mai" ToRole="khuyen_mai" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__5812160E" FromRole="chi_tiet_khuyen_mai" ToRole="mon_an" />
+        </EntityType>
+        <EntityType Name="danh_gia_khach_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nguoi_danh_gia" Type="Int32" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <Property Name="noi_dung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sao" Type="Int32" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__danh_gia___id_mo__5070F446" FromRole="danh_gia_khach_hang" ToRole="mon_an" />
+          <NavigationProperty Name="user" Relationship="Self.FK__danh_gia___id_ng__4F7CD00D" FromRole="danh_gia_khach_hang" ToRole="user" />
+        </EntityType>
+        <EntityType Name="danh_muc_mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_danh_muc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_da__5535A963" FromRole="danh_muc_mon_an" ToRole="chi_tiet_danh_muc" />
+        </EntityType>
+        <EntityType Name="dat_ban">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nguoi_dat" Type="Int32" />
+          <Property Name="id_nhan_vien" Type="Int32" />
+          <Property Name="ngay_dat" Type="DateTime" Precision="3" />
+          <Property Name="tien_coc_truoc" Type="Int32" />
+          <Property Name="ngay_den" Type="DateTime" Precision="3" />
+          <Property Name="so_luong_nguoi" Type="Int32" />
+          <Property Name="trang_thai" Type="Int32" />
+          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_da__4D94879B" FromRole="dat_ban" ToRole="chi_tiet_dat_ban" />
+          <NavigationProperty Name="user" Relationship="Self.FK__dat_ban__id_nguo__4BAC3F29" FromRole="dat_ban" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__dat_ban__id_nhan__4CA06362" FromRole="dat_ban" ToRole="user" />
+          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_da__59063A47" FromRole="dat_ban" ToRole="dat_ban_mon_an" />
+        </EntityType>
+        <EntityType Name="dat_ban_mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_dat_ban" Type="Int32" />
+          <Property Name="id_mon_an" Type="Int32" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban_m__id_da__59063A47" FromRole="dat_ban_mon_an" ToRole="dat_ban" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__dat_ban_m__id_mo__59FA5E80" FromRole="dat_ban_mon_an" ToRole="mon_an" />
+        </EntityType>
+        <EntityType Name="dat_hang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nguoi_dat" Type="Int32" />
+          <Property Name="id_nhan_vien" Type="Int32" />
+          <Property Name="ngay_dat" Type="DateTime" Precision="3" />
+          <Property Name="tien_coc_truoc" Type="Int32" />
+          <Property Name="trang_thai" Type="Int32" />
+          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_da__4AB81AF0" FromRole="dat_hang" ToRole="chi_tiet_dat_hang" />
+          <NavigationProperty Name="user" Relationship="Self.FK__dat_hang__id_ngu__47DBAE45" FromRole="dat_hang" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__dat_hang__id_nha__48CFD27E" FromRole="dat_hang" ToRole="user" />
+        </EntityType>
+        <EntityType Name="hoa_don">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_nguoi_dung" Type="Int32" />
+          <Property Name="ngay_tao" Type="DateTime" Precision="3" />
+          <Property Name="trang_thai" Type="Int32" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_ho__5441852A" FromRole="hoa_don" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="user" Relationship="Self.FK__hoa_don__id_nguo__5165187F" FromRole="hoa_don" ToRole="user" />
+        </EntityType>
+        <EntityType Name="khuyen_mai">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_dot_khuyen_mai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="bat_dau" Type="DateTime" Precision="3" />
+          <Property Name="ket_thuc" Type="DateTime" Precision="3" />
+          <Property Name="phan_tram_giam" Type="Int32" />
+          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__571DF1D5" FromRole="khuyen_mai" ToRole="chi_tiet_khuyen_mai" />
+        </EntityType>
+        <EntityType Name="mon_an">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_mon_an" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Int32" />
+          <Property Name="ngay_them" Type="DateTime" Precision="3" />
+          <Property Name="ngay_sua" Type="DateTime" Precision="3" />
+          <Property Name="trang_thai" Type="Int32" />
+          <Property Name="hinh_anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_mo__5629CD9C" FromRole="mon_an" ToRole="chi_tiet_danh_muc" />
+          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_mo__49C3F6B7" FromRole="mon_an" ToRole="chi_tiet_dat_hang" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_mo__534D60F1" FromRole="mon_an" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_mo__5812160E" FromRole="mon_an" ToRole="chi_tiet_khuyen_mai" />
+          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_mo__5070F446" FromRole="mon_an" ToRole="danh_gia_khach_hang" />
+          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_mo__59FA5E80" FromRole="mon_an" ToRole="dat_ban_mon_an" />
+        </EntityType>
+        <EntityType Name="tin_tuc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngay_viet" Type="DateTime" Precision="3" />
+          <Property Name="tieu_de" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_nguoi_viet" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK__tin_tuc__id_nguo__46E78A0C" FromRole="tin_tuc" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten_nguoi_dung" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mat_khau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dia_chi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="so_dien_thoai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="vai_tro" Type="Int32" />
+          <Property Name="trang_thai" Type="Int32" />
+          <Property Name="hinh_anh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_nh__52593CB8" FromRole="user" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_ng__4F7CD00D" FromRole="user" ToRole="danh_gia_khach_hang" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban__id_nguo__4BAC3F29" FromRole="user" ToRole="dat_ban" />
+          <NavigationProperty Name="dat_ban1" Relationship="Self.FK__dat_ban__id_nhan__4CA06362" FromRole="user" ToRole="dat_ban" />
+          <NavigationProperty Name="dat_hang" Relationship="Self.FK__dat_hang__id_ngu__47DBAE45" FromRole="user" ToRole="dat_hang" />
+          <NavigationProperty Name="dat_hang1" Relationship="Self.FK__dat_hang__id_nha__48CFD27E" FromRole="user" ToRole="dat_hang" />
+          <NavigationProperty Name="hoa_don" Relationship="Self.FK__hoa_don__id_nguo__5165187F" FromRole="user" ToRole="hoa_don" />
+          <NavigationProperty Name="tin_tuc" Relationship="Self.FK__tin_tuc__id_nguo__46E78A0C" FromRole="user" ToRole="tin_tuc" />
+        </EntityType>
+        <Association Name="FK__chi_tiet___id_ba__4E88ABD4">
+          <End Role="ban" Type="Self.ban" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_ban">
+              <PropertyRef Name="id_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__5535A963">
+          <End Role="danh_muc_mon_an" Type="Self.danh_muc_mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="danh_muc_mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_danh_muc">
+              <PropertyRef Name="id_danh_muc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__5629CD9C">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_danh_muc">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__4D94879B">
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_ban">
+              <PropertyRef Name="id_dat_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_da__4AB81AF0">
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_hang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_hang">
+              <PropertyRef Name="id_dat_hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__49C3F6B7">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_dat_hang">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_ho__5441852A">
+          <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hoa_don">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_hoa_don" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__534D60F1">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_nh__52593CB8">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_hoa_don">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_kh__571DF1D5">
+          <End Role="khuyen_mai" Type="Self.khuyen_mai" Multiplicity="0..1" />
+          <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khuyen_mai">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_khuyen_mai">
+              <PropertyRef Name="id_khuyen_mai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chi_tiet___id_mo__5812160E">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="chi_tiet_khuyen_mai">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__danh_gia___id_mo__5070F446">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danh_gia_khach_hang">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__danh_gia___id_ng__4F7CD00D">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="danh_gia_khach_hang">
+              <PropertyRef Name="id_nguoi_danh_gia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban__id_nguo__4BAC3F29">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban">
+              <PropertyRef Name="id_nguoi_dat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban__id_nhan__4CA06362">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban_m__id_da__59063A47">
+          <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
+          <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dat_ban">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban_mon_an">
+              <PropertyRef Name="id_dat_ban" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_ban_m__id_mo__59FA5E80">
+          <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
+          <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mon_an">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_ban_mon_an">
+              <PropertyRef Name="id_mon_an" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_hang__id_ngu__47DBAE45">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_hang">
+              <PropertyRef Name="id_nguoi_dat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dat_hang__id_nha__48CFD27E">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dat_hang">
+              <PropertyRef Name="id_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hoa_don__id_nguo__5165187F">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="hoa_don">
+              <PropertyRef Name="id_nguoi_dung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tin_tuc__id_nguo__46E78A0C">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="tin_tuc" Type="Self.tin_tuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tin_tuc">
+              <PropertyRef Name="id_nguoi_viet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="quan_ly_nha_hangEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bans" EntityType="Self.ban" />
+          <EntitySet Name="chi_tiet_danh_muc" EntityType="Self.chi_tiet_danh_muc" />
+          <EntitySet Name="chi_tiet_dat_ban" EntityType="Self.chi_tiet_dat_ban" />
+          <EntitySet Name="chi_tiet_dat_hang" EntityType="Self.chi_tiet_dat_hang" />
+          <EntitySet Name="chi_tiet_hoa_don" EntityType="Self.chi_tiet_hoa_don" />
+          <EntitySet Name="chi_tiet_khuyen_mai" EntityType="Self.chi_tiet_khuyen_mai" />
+          <EntitySet Name="danh_gia_khach_hang" EntityType="Self.danh_gia_khach_hang" />
+          <EntitySet Name="danh_muc_mon_an" EntityType="Self.danh_muc_mon_an" />
+          <EntitySet Name="dat_ban" EntityType="Self.dat_ban" />
+          <EntitySet Name="dat_ban_mon_an" EntityType="Self.dat_ban_mon_an" />
+          <EntitySet Name="dat_hang" EntityType="Self.dat_hang" />
+          <EntitySet Name="hoa_don" EntityType="Self.hoa_don" />
+          <EntitySet Name="khuyen_mai" EntityType="Self.khuyen_mai" />
+          <EntitySet Name="mon_an" EntityType="Self.mon_an" />
+          <EntitySet Name="tin_tuc" EntityType="Self.tin_tuc" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK__chi_tiet___id_ba__4E88ABD4" Association="Self.FK__chi_tiet___id_ba__4E88ABD4">
+            <End Role="ban" EntitySet="bans" />
+            <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__5535A963" Association="Self.FK__chi_tiet___id_da__5535A963">
+            <End Role="danh_muc_mon_an" EntitySet="danh_muc_mon_an" />
+            <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__5629CD9C" Association="Self.FK__chi_tiet___id_mo__5629CD9C">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__4D94879B" Association="Self.FK__chi_tiet___id_da__4D94879B">
+            <End Role="dat_ban" EntitySet="dat_ban" />
+            <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_da__4AB81AF0" Association="Self.FK__chi_tiet___id_da__4AB81AF0">
+            <End Role="dat_hang" EntitySet="dat_hang" />
+            <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__49C3F6B7" Association="Self.FK__chi_tiet___id_mo__49C3F6B7">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_ho__5441852A" Association="Self.FK__chi_tiet___id_ho__5441852A">
+            <End Role="hoa_don" EntitySet="hoa_don" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__534D60F1" Association="Self.FK__chi_tiet___id_mo__534D60F1">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_nh__52593CB8" Association="Self.FK__chi_tiet___id_nh__52593CB8">
+            <End Role="user" EntitySet="users" />
+            <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_kh__571DF1D5" Association="Self.FK__chi_tiet___id_kh__571DF1D5">
+            <End Role="khuyen_mai" EntitySet="khuyen_mai" />
+            <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chi_tiet___id_mo__5812160E" Association="Self.FK__chi_tiet___id_mo__5812160E">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__danh_gia___id_mo__5070F446" Association="Self.FK__danh_gia___id_mo__5070F446">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__danh_gia___id_ng__4F7CD00D" Association="Self.FK__danh_gia___id_ng__4F7CD00D">
+            <End Role="user" EntitySet="users" />
+            <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban__id_nguo__4BAC3F29" Association="Self.FK__dat_ban__id_nguo__4BAC3F29">
+            <End Role="user" EntitySet="users" />
+            <End Role="dat_ban" EntitySet="dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban__id_nhan__4CA06362" Association="Self.FK__dat_ban__id_nhan__4CA06362">
+            <End Role="user" EntitySet="users" />
+            <End Role="dat_ban" EntitySet="dat_ban" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban_m__id_da__59063A47" Association="Self.FK__dat_ban_m__id_da__59063A47">
+            <End Role="dat_ban" EntitySet="dat_ban" />
+            <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_ban_m__id_mo__59FA5E80" Association="Self.FK__dat_ban_m__id_mo__59FA5E80">
+            <End Role="mon_an" EntitySet="mon_an" />
+            <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_hang__id_ngu__47DBAE45" Association="Self.FK__dat_hang__id_ngu__47DBAE45">
+            <End Role="user" EntitySet="users" />
+            <End Role="dat_hang" EntitySet="dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dat_hang__id_nha__48CFD27E" Association="Self.FK__dat_hang__id_nha__48CFD27E">
+            <End Role="user" EntitySet="users" />
+            <End Role="dat_hang" EntitySet="dat_hang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hoa_don__id_nguo__5165187F" Association="Self.FK__hoa_don__id_nguo__5165187F">
+            <End Role="user" EntitySet="users" />
+            <End Role="hoa_don" EntitySet="hoa_don" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tin_tuc__id_nguo__46E78A0C" Association="Self.FK__tin_tuc__id_nguo__46E78A0C">
+            <End Role="user" EntitySet="users" />
+            <End Role="tin_tuc" EntitySet="tin_tuc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="quan_ly_nha_hangModelStoreContainer" CdmEntityContainer="quan_ly_nha_hangEntities">
+          <EntitySetMapping Name="bans">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.ban">
+              <MappingFragment StoreEntitySet="ban">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_ban" ColumnName="ten_ban" />
+                <ScalarProperty Name="cho_ngoi_toi_da" ColumnName="cho_ngoi_toi_da" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+                <ScalarProperty Name="dat_coc_toi_thieu" ColumnName="dat_coc_toi_thieu" />
+                <ScalarProperty Name="hinh_anh" ColumnName="hinh_anh" />
+                <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chi_tiet_danh_muc">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.chi_tiet_danh_muc">
+              <MappingFragment StoreEntitySet="chi_tiet_danh_muc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_danh_muc" ColumnName="id_danh_muc" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chi_tiet_dat_ban">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.chi_tiet_dat_ban">
+              <MappingFragment StoreEntitySet="chi_tiet_dat_ban">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_dat_ban" ColumnName="id_dat_ban" />
+                <ScalarProperty Name="id_ban" ColumnName="id_ban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chi_tiet_dat_hang">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.chi_tiet_dat_hang">
+              <MappingFragment StoreEntitySet="chi_tiet_dat_hang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+                <ScalarProperty Name="id_dat_hang" ColumnName="id_dat_hang" />
+                <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chi_tiet_hoa_don">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.chi_tiet_hoa_don">
+              <MappingFragment StoreEntitySet="chi_tiet_hoa_don">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_nhan_vien" ColumnName="id_nhan_vien" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+                <ScalarProperty Name="id_hoa_don" ColumnName="id_hoa_don" />
+                <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chi_tiet_khuyen_mai">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.chi_tiet_khuyen_mai">
+              <MappingFragment StoreEntitySet="chi_tiet_khuyen_mai">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_khuyen_mai" ColumnName="id_khuyen_mai" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="danh_gia_khach_hang">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.danh_gia_khach_hang">
+              <MappingFragment StoreEntitySet="danh_gia_khach_hang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_nguoi_danh_gia" ColumnName="id_nguoi_danh_gia" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+                <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+                <ScalarProperty Name="sao" ColumnName="sao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="danh_muc_mon_an">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.danh_muc_mon_an">
+              <MappingFragment StoreEntitySet="danh_muc_mon_an">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_danh_muc" ColumnName="ten_danh_muc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dat_ban">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.dat_ban">
+              <MappingFragment StoreEntitySet="dat_ban">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_nguoi_dat" ColumnName="id_nguoi_dat" />
+                <ScalarProperty Name="id_nhan_vien" ColumnName="id_nhan_vien" />
+                <ScalarProperty Name="ngay_dat" ColumnName="ngay_dat" />
+                <ScalarProperty Name="tien_coc_truoc" ColumnName="tien_coc_truoc" />
+                <ScalarProperty Name="ngay_den" ColumnName="ngay_den" />
+                <ScalarProperty Name="so_luong_nguoi" ColumnName="so_luong_nguoi" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dat_ban_mon_an">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.dat_ban_mon_an">
+              <MappingFragment StoreEntitySet="dat_ban_mon_an">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_dat_ban" ColumnName="id_dat_ban" />
+                <ScalarProperty Name="id_mon_an" ColumnName="id_mon_an" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dat_hang">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.dat_hang">
+              <MappingFragment StoreEntitySet="dat_hang">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_nguoi_dat" ColumnName="id_nguoi_dat" />
+                <ScalarProperty Name="id_nhan_vien" ColumnName="id_nhan_vien" />
+                <ScalarProperty Name="ngay_dat" ColumnName="ngay_dat" />
+                <ScalarProperty Name="tien_coc_truoc" ColumnName="tien_coc_truoc" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hoa_don">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.hoa_don">
+              <MappingFragment StoreEntitySet="hoa_don">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_nguoi_dung" ColumnName="id_nguoi_dung" />
+                <ScalarProperty Name="ngay_tao" ColumnName="ngay_tao" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khuyen_mai">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.khuyen_mai">
+              <MappingFragment StoreEntitySet="khuyen_mai">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_dot_khuyen_mai" ColumnName="ten_dot_khuyen_mai" />
+                <ScalarProperty Name="bat_dau" ColumnName="bat_dau" />
+                <ScalarProperty Name="ket_thuc" ColumnName="ket_thuc" />
+                <ScalarProperty Name="phan_tram_giam" ColumnName="phan_tram_giam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mon_an">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.mon_an">
+              <MappingFragment StoreEntitySet="mon_an">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_mon_an" ColumnName="ten_mon_an" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="ngay_them" ColumnName="ngay_them" />
+                <ScalarProperty Name="ngay_sua" ColumnName="ngay_sua" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+                <ScalarProperty Name="hinh_anh" ColumnName="hinh_anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tin_tuc">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.tin_tuc">
+              <MappingFragment StoreEntitySet="tin_tuc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ngay_viet" ColumnName="ngay_viet" />
+                <ScalarProperty Name="tieu_de" ColumnName="tieu_de" />
+                <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+                <ScalarProperty Name="id_nguoi_viet" ColumnName="id_nguoi_viet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ten_nguoi_dung" ColumnName="ten_nguoi_dung" />
+                <ScalarProperty Name="mat_khau" ColumnName="mat_khau" />
+                <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+                <ScalarProperty Name="so_dien_thoai" ColumnName="so_dien_thoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="vai_tro" ColumnName="vai_tro" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+                <ScalarProperty Name="hinh_anh" ColumnName="hinh_anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -23,9 +23,5 @@ namespace Restaurant_Manager_4.Controllers
 
             return View();
         }
-        public ActionResult Produtc_Detail()
-        {
-            return View();
-        }
     }
 }
