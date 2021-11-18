@@ -1,0 +1,121 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/asset-login/css/login-view/login.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="cont">
+            <div class="form sign-in">
+                <h2>Sign In</h2>
+                <div class="form-group">
+                    <label>
+                        <span>Email Address</span>
+                        <input type="email" name="email" id="email" class="error form-control">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" id="password" class="error form-control">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button class="submit" type="submit">Sign In</button>
+                </div>
+                <div class="form-group" style="text-align:center; color:red;">
+                    @Html.Raw(ViewBag.StrError)
+                </div>
+                <p class="forgot-pass">Forgot Password ?</p>
+
+                <div class="social-media">
+                    <ul>
+                        <li><img src="~/Content/asset-login/image/facebook.png"></li>
+                        <li><img src="~/Content/asset-login/image/twitter.png"></li>
+                        <li><img src="~/Content/asset-login/image/linkedin.png"></li>
+                        <li><img src="~/Content/asset-login/image/instagram.png"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sub-cont">
+                <div class="img">
+                    <div class="img-text m-up">
+                        <h2>New here?</h2>
+                        <p>Sign up and discover many new dishes !</p>
+                    </div>
+                    <div class="img-text m-in">
+                        <h2>One of us?</h2>
+                        <p>If you already has an account, just sign in. We've missed you!</p>
+                    </div>
+                    <div class="img-btn">
+                        <span class="m-up">Sign Up</span>
+                        <span class="m-in">Sign In</span>
+                    </div>
+                </div>
+                <div class="form sign-up" id="sign-up">
+                    <h2>Sign Up</h2>
+                    <label>
+                        <span>Name</span>
+                        <input type="text" id="username" class="error">
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" id="email2" class="error">
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" id="password2" class="error">
+                    </label>
+                    <label>
+                        <span>Confirm Password</span>
+                        <input type="password" id="rePassword" class="error">
+                    </label>
+                    <button type="button" class="submit">Sign Up Now</button>
+                    <div class="message">Password phải đủ 8 kí tự</div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/Content/asset-login/JS/validate-signin.js"></script>
+        <script>
+        validator({
+            class: '.cont',
+            errorSelector: '.error',
+            rules: [
+                validator.isRequired('#email'),
+                validator.isEmail('#email'),
+                validator.isRequired('#password'),
+            ]
+    });
+
+        validator({
+            class: '.cont',
+            errorSelector: '.error',
+            rules: [
+                validator.isRequired('#username'),
+                validator.isRequired('#email2'),
+                validator.isEmail('#email2'),
+                validator.minLength('#password2', 8),
+                validator.isConfirmed('#rePassword', function() {
+                    return document.querySelector('.cont #password2').value;
+                }),
+            ]
+        });
+        </script>
+    }
+</body>
+
+</html>

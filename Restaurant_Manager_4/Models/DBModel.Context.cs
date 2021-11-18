@@ -41,7 +41,5 @@ namespace Restaurant_Manager_4.Models
         public virtual DbSet<mon_an> mon_an { get; set; }
         public virtual DbSet<tin_tuc> tin_tuc { get; set; }
         public virtual DbSet<user> users { get; set; }
-
-        public System.Data.Entity.DbSet<Restaurant_Manager_4.Models.BaoCaoThongKe> BaoCaoThongKes { get; set; }
     }
 }

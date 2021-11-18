@@ -17,5 +17,10 @@ namespace Restaurant_Manager_4
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Session_Start()
+        {
+            Session["Users"] = "";
+            Session["UserID"] = "";
+        }
     }
 }
