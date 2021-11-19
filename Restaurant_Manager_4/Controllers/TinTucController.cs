@@ -8,7 +8,6 @@ using Restaurant_Manager_4.Models;
 
 namespace Restaurant_Manager_4.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
     public class TinTucController : Controller
     {
         private QuanLyNhaHangDataContext _context;
@@ -34,6 +33,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: TinTuc/Create
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Create()
         {
             using (var context = new QuanLyNhaHangDataContext())
@@ -45,6 +45,7 @@ namespace Restaurant_Manager_4.Controllers
 
         // POST: TinTuc/Create
         [HttpPost]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -66,6 +67,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: TinTuc/Edit/5
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -73,6 +75,7 @@ namespace Restaurant_Manager_4.Controllers
 
         // POST: TinTuc/Edit/5
         [HttpPost]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -88,6 +91,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: TinTuc/Delete/5
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();
@@ -95,6 +99,7 @@ namespace Restaurant_Manager_4.Controllers
 
         // POST: TinTuc/Delete/5
         [HttpPost]
+        [CustomAuthorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

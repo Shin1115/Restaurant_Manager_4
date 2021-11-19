@@ -101,7 +101,7 @@ namespace Restaurant_Manager_4.Controllers
                         dia_chi = registrationView.Address,
                         email = registrationView.Email,
                         so_dien_thoai = registrationView.PhoneNumber,
-                        vai_tro = 3,
+                        vai_tro = 3, 
                         trang_thai = 1,
                         hinh_anh = "/Images/DefaultAvatar.jpg"
                     };
