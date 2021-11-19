@@ -12,6 +12,7 @@ namespace Restaurant_Manager_4.Infrastructure
     {
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
+        public string FullName { get; set; }
         public string Address { get; set; }
         public ICollection<UserRole> Role { get; set; }
 
@@ -19,6 +20,7 @@ namespace Restaurant_Manager_4.Infrastructure
             string.Empty, string.Empty, true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now)
         {
             UserId = user.id;
+            FullName = user.ten_nguoi_dung;
             PhoneNumber = user.so_dien_thoai;
             Address = user.dia_chi;
             Role = new List<UserRole>() { UserRoleConverter.GetRole(user.vai_tro) };

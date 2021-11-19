@@ -18,9 +18,8 @@
 }
 
 * {
-    font-family: 'glyphicons-halflings-regular';
+    font-family: glyphicons-halflings-regular, sans-serif;
 }
-
 
 .single-products-catagory a img {
     width: 100%;
@@ -33,9 +32,14 @@
 }
 
 .single-products-catagory .hover-content h4 {
-    font-family: Poppins,sans-serif;
+    font-family: glyphicons-halflings-regular, sans-serif;
 }
 
 a {
     padding: 5px;
+}
+
+.main-content-wrapper .header-area .logo {
+    margin-bottom: 30px;
+    display: block;
 }

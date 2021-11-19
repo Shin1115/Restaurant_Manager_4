@@ -21,6 +21,7 @@ namespace Restaurant_Manager_4
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        // Giải mã cookie và lấy ra user nếu có
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
             HttpCookie authCookie = Request.Cookies["Authentication"];
@@ -28,9 +29,10 @@ namespace Restaurant_Manager_4
             {
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
-                var serializeModel = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
+                CustomSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
                 CustomPrincipal principal = new CustomPrincipal(authTicket.Name);
                 principal.UserId = serializeModel.UserId;
+                principal.FullName = serializeModel.FullName;
                 principal.UserName = serializeModel.Username;
                 principal.PhoneNumber = serializeModel.PhoneNumber;
                 principal.Email = serializeModel.Email;
