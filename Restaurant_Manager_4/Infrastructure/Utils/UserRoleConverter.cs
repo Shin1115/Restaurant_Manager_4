@@ -19,5 +19,20 @@
                     return UserRole.Customer;
             }
         }
+
+        public static UserRole GetRole(string roleName)
+        {
+            switch (roleName)
+            {
+                case null:
+                    return UserRole.Customer;
+                case "Customer":
+                    return UserRole.Customer;
+                case "Employee":
+                    return UserRole.Employee;
+                default:
+                    return UserRole.Admin;
+            }
+        }
     }
 }
