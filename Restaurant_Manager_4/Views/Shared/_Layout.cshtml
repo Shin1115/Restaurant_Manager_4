@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Title  -->
     <title>Amado - Furniture Ecommerce Template | Home</title>
     <!-- Favicon  -->
     <link rel="icon" href="/Content/asset/img/core-img/favicon.ico">
     <!-- Core Style CSS -->
-    <link href="~/Content/asset/css/core-style.css" rel="stylesheet" />
-    <link href="~/Content/asset/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Styles.Render("~/Content/asset/css/core-style.css")
     @Styles.Render("~/Content/asset/style.css")
     @Scripts.Render("~/bundles/modernizr")
@@ -95,13 +97,20 @@
             <div class="amado-btn-group mt-30 mb-100">
                 @if (System.Web.HttpContext.Current.User.Identity.Name != "")
                 {
-                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn mb-15">Đăng xuất</a>
+                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
                 }
                 else
                 {
-                    <a href="@Url.Action("Login","Account")" class="btn amado-btn mb-15">Đăng nhập</a>
+                    <a href="@Url.Action("Login","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
                 }
-                <a href="#" class="btn amado-btn active">New this week</a>
+                @if (System.Web.HttpContext.Current.User.Identity.Name != "")
+                {
+                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn active">Đăng xuất</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login","Account")" class="btn amado-btn active">Đăng nhập</a>
+                }
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
