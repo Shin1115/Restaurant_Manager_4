@@ -1,24 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using Restaurant_Manager_4.Models;
+using System.Linq;
 
 namespace Restaurant_Manager_4.Controllers
 {
     public class DanhMucMonAnController : Controller
     {
         // GET: DanhMucMonAn
-        public string Index()
+        public ActionResult Index()
         {
-            return "Danh Muc Mon An";
-        }
-
-        /// <summary>
-        /// Hiển thị danh sách các món ăn có trong danh mục.
-        /// </summary>
-        /// <returns></returns>
-        [ActionName("DanhSach")]
-        public ActionResult List()
-        {
-            return View();
+            using (var context = new QuanLyNhaHangDataContext())
+            {
+                List<danh_muc_mon_an> DanhMucMonAnList = context.danh_muc_mon_an.ToList();
+                return View(DanhMucMonAnList);
+            }
         }
 
         /// <summary>

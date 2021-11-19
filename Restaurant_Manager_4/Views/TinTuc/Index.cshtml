@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Restaurant_Manager_4.Models.tin_tuc>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tin tức</title>
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+    {
+        @Html.ActionLink("Tạo tin tức", "Create", "TinTucController", new { @class = "btn amado-btn mb-15" })
+    }
+    @if (Model.Count() == 0)
+    {
+        <p>Chưa có bài viết nào ở đây cả</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Ngày viết
+                    @Html.DisplayNameFor(model => model.ngay_viet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tieu_de)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.noi_dung)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.user.ten_nguoi_dung)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngay_viet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tieu_de)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.noi_dung)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user.ten_nguoi_dung)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</body>
+</html>

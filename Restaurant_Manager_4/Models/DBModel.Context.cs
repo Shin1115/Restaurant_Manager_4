@@ -13,10 +13,10 @@ namespace Restaurant_Manager_4.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class quan_ly_nha_hangEntities : DbContext
+    public partial class QuanLyNhaHangDataContext : DbContext
     {
-        public quan_ly_nha_hangEntities()
-            : base("name=quan_ly_nha_hangEntities")
+        public QuanLyNhaHangDataContext()
+            : base("name=QuanLyNhaHangDataContext")
         {
         }
     
