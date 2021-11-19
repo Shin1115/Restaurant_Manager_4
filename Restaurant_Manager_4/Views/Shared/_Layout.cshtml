@@ -64,17 +64,43 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="~/Home/Index">Trang chủ</a></li>
+                    @if (System.Web.HttpContext.Current.User.Identity.Name != "")
+                    {
+                        <li><a href="/">@System.Web.HttpContext.Current.User.Identity.Name</a></li>
+                    }
+
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Home")
+                    {
+                        <li class="active"><a href="~/Home/Index">Trang chủ</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/Home/Index">Trang chủ</a></li>
+                    }
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="~/Home/Product_Detail">Product</a></li>
                     <li><a href="cart.html">Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
-                    <li>@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "TinTuc")
+                    {
+                        <li class="active">@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
+                    }
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">Discount</a>
+                @if (System.Web.HttpContext.Current.User.Identity.Name != "")
+                {
+                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn mb-15">Đăng xuất</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login","Account")" class="btn amado-btn mb-15">Đăng nhập</a>
+                }
                 <a href="#" class="btn amado-btn active">New this week</a>
             </div>
             <!-- Cart Menu -->

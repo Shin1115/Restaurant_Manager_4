@@ -1,5 +1,7 @@
 ﻿
 @{
+    /**/
+
     Layout = null;
 }
 
@@ -91,29 +93,29 @@
 
         <script type="text/javascript" src="~/Content/asset-login/JS/validate-signin.js"></script>
         <script>
-        validator({
-            class: '.cont',
-            errorSelector: '.error',
-            rules: [
-                validator.isRequired('#email'),
-                validator.isEmail('#email'),
-                validator.isRequired('#password'),
-            ]
-    });
+            validator({
+                class: '.cont',
+                errorSelector: '.error',
+                rules: [
+                    validator.isRequired('#email'),
+                    validator.isEmail('#email'),
+                    validator.isRequired('#password'),
+                ]
+            });
 
-        validator({
-            class: '.cont',
-            errorSelector: '.error',
-            rules: [
-                validator.isRequired('#username'),
-                validator.isRequired('#email2'),
-                validator.isEmail('#email2'),
-                validator.minLength('#password2', 8),
-                validator.isConfirmed('#rePassword', function() {
-                    return document.querySelector('.cont #password2').value;
-                }),
-            ]
-        });
+            validator({
+                class: '.cont',
+                errorSelector: '.error',
+                rules: [
+                    validator.isRequired('#username'),
+                    validator.isRequired('#email2'),
+                    validator.isEmail('#email2'),
+                    validator.minLength('#password2', 8),
+                    validator.isConfirmed('#rePassword', function () {
+                        return document.querySelector('.cont #password2').value;
+                    }),
+                ]
+            });
         </script>
     }
 </body>
