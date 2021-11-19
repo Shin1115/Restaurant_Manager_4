@@ -128,12 +128,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\DanhMucMonAnController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\LoginView.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomAuthFilter.cs" />
+    <Compile Include="Infrastructure\CustomMembership.cs" />
+    <Compile Include="Infrastructure\CustomMembershipUser.cs" />
+    <Compile Include="Infrastructure\CustomPrincipal.cs" />
+    <Compile Include="Infrastructure\CustomRole.cs" />
+    <Compile Include="Infrastructure\CustomSerializeModel.cs" />
+    <Compile Include="Infrastructure\RegistrationView.cs" />
+    <Compile Include="Infrastructure\UserRole.cs" />
+    <Compile Include="Infrastructure\Utils\UserRoleConverter.cs" />
     <Compile Include="Models\ban.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -211,8 +225,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -256,6 +270,14 @@
     <Content Include="Views\DanhMucMonAn\DanhSach.cshtml" />
     <Content Include="Views\BaoCao\Index.cshtml" />
     <Content Include="Views\BaoCao\Edit.cshtml" />
+    <Content Include="Views\DanhMucMonAn\Index.cshtml" />
+    <Content Include="Views\TinTuc\Index.cshtml" />
+    <Content Include="Views\TinTuc\Details.cshtml" />
+    <Content Include="Views\TinTuc\Create.cshtml" />
+    <Content Include="Views\BaoCao\Create.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
