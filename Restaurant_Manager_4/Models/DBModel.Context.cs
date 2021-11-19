@@ -13,10 +13,10 @@ namespace Restaurant_Manager_4.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class quan_ly_nha_hangEntities : DbContext
+    public partial class QuanLyNhaHangDataContext : DbContext
     {
-        public quan_ly_nha_hangEntities()
-            : base("name=quan_ly_nha_hangEntities")
+        public QuanLyNhaHangDataContext()
+            : base("name=QuanLyNhaHangDataContext")
         {
         }
     
@@ -41,7 +41,5 @@ namespace Restaurant_Manager_4.Models
         public virtual DbSet<mon_an> mon_an { get; set; }
         public virtual DbSet<tin_tuc> tin_tuc { get; set; }
         public virtual DbSet<user> users { get; set; }
-
-        public System.Data.Entity.DbSet<Restaurant_Manager_4.Models.BaoCaoThongKe> BaoCaoThongKes { get; set; }
     }
 }

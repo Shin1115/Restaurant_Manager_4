@@ -29,6 +29,7 @@ namespace Restaurant_Manager_4.Models
     
         public int id { get; set; }
         public string ten_nguoi_dung { get; set; }
+        public string ten_dang_nhap { get; set; }
         public string mat_khau { get; set; }
         public string dia_chi { get; set; }
         public string so_dien_thoai { get; set; }
