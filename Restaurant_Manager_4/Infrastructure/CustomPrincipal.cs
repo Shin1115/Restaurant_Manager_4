@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using Restaurant_Manager_4.Infrastructure.Utils;
 
 namespace Restaurant_Manager_4.Infrastructure
 {
@@ -23,9 +24,18 @@ namespace Restaurant_Manager_4.Infrastructure
             Identity = new GenericIdentity(username);
         }
 
+        /// <summary>
+        /// Phương thức này thực hiện kiểm tra 
+        /// user hiện tại có thuộc một role nào đó hay không.
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
         public bool IsInRole(string role)
         {
-            if (Roles.Any(r => role.Contains(r)))
+            UserRole userRole = UserRoleConverter.GetRole(Roles[0]);
+            UserRole requestRole = UserRoleConverter.GetRole(role);
+
+            if ((int)userRole <= (int)requestRole)
             {
                 return true;
             }
