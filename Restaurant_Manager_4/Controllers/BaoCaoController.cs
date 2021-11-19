@@ -1,4 +1,5 @@
-﻿using Restaurant_Manager_4.Models;
+﻿using Restaurant_Manager_4.Infrastructure;
+using Restaurant_Manager_4.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Restaurant_Manager_4.Controllers
 {
+    [CustomAuthorize(Roles = "Admin")]
     public class BaoCaoController : Controller
     {
         public static List<BaoCaoThongKe> BaoCaoThongKes = new List<BaoCaoThongKe>()
