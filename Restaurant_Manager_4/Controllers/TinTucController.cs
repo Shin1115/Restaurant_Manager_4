@@ -21,7 +21,7 @@ namespace Restaurant_Manager_4.Controllers
         {
             using(var context = new QuanLyNhaHangDataContext())
             {
-                List<tin_tuc> tinTucList = context.tin_tuc.ToList();
+                List<tin_tuc> tinTucList = context.tin_tuc.Include("user").ToList();
                 return View(tinTucList);
             }
         }
@@ -50,10 +50,12 @@ namespace Restaurant_Manager_4.Controllers
         {
             try
             {
+                CustomPrincipal user = (CustomPrincipal)HttpContext.User;
                 tin_tuc newTintuc = new tin_tuc()
                 {
                     tieu_de = collection["tieu_de"],
-                    noi_dung = collection["noi_dung"]
+                    noi_dung = collection["noi_dung"],
+                    id_nguoi_viet = user.UserId
                 };
                 newTintuc.ngay_viet = DateTime.Now;
                 _context.tin_tuc.Add(newTintuc);
