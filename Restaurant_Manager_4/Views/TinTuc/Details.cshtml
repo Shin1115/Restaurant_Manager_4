@@ -1,0 +1,58 @@
+﻿@model Restaurant_Manager_4.Models.tin_tuc
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>tin_tuc</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ngay_viet)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ngay_viet)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tieu_de)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tieu_de)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.noi_dung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.noi_dung)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.user.ten_nguoi_dung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.user.ten_nguoi_dung)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -14,8 +14,8 @@
     <!-- Core Style CSS -->
     <link href="~/Content/asset/css/core-style.css" rel="stylesheet" />
     <link href="~/Content/asset/style.css" rel="stylesheet" />
-    @Styles.Render("~/asset/css")
-    @Styles.Render("~/Content/asset")
+    @Styles.Render("~/Content/asset/css/core-style.css")
+    @Styles.Render("~/Content/asset/style.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -64,16 +64,17 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                    <li class="active"><a href="~/Home/Index">Trang chủ</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="~/Home/Product_Detail">Product</a></li>
                     <li><a href="cart.html">Cart</a></li>
                     <li><a href="checkout.html">Checkout</a></li>
+                    <li>@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">%Discount%</a>
+                <a href="#" class="btn amado-btn mb-15">Discount</a>
                 <a href="#" class="btn amado-btn active">New this week</a>
             </div>
             <!-- Cart Menu -->
@@ -93,7 +94,7 @@
         <!-- Header Area End -->
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix">
-            @RenderBody()           
+            @RenderBody()
         </div>
         <!-- Product Catagories Area End -->
 
@@ -134,13 +135,6 @@
                         <div class="footer-logo mr-50">
                             <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
                         </div>
-                        <!-- Copywrite Text -->
-                        <p class="copywrite">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
                     </div>
                 </div>
                 <!-- Single Widget Area -->
@@ -153,7 +147,7 @@
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <a class="nav-link" href="index.html">Trang chủ</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="shop.html">Shop</a>
