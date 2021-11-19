@@ -1995,6 +1995,14 @@
     <Content Include="Views\DanhMucMonAn\DanhSach.cshtml" />
     <Content Include="Views\BaoCao\Index.cshtml" />
     <Content Include="Views\BaoCao\Edit.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\TinTuc\Create.cshtml" />
+    <Content Include="Views\TinTuc\Details.cshtml" />
+    <Content Include="Views\TinTuc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
