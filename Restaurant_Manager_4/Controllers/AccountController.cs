@@ -41,6 +41,7 @@ namespace Restaurant_Manager_4.Controllers
                         CustomSerializeModel userModel = new CustomSerializeModel()
                         {
                             UserId = user.UserId,
+                            FullName = user.FullName,
                             Username = user.UserName,
                             Email = user.Email,
                             PhoneNumber = user.PhoneNumber,
@@ -121,7 +122,6 @@ namespace Restaurant_Manager_4.Controllers
             return View(registrationView);
         }
 
-        [ActionName("DangXuat")]
         public ActionResult LogOut()
         {
             HttpCookie cookie = new HttpCookie("Authentication", "");
