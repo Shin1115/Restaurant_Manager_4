@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -129,10 +132,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BanController.cs" />
     <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\DanhMucMonAnController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DTO\BanDTO.cs" />
+    <Compile Include="Enums\ETrangThaiBan.cs" />
+    <Compile Include="Helpers\EnumExtensionMethods.cs" />
+    <Compile Include="Helpers\Selectlists.cs" />
     <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\LoginView.cs" />
     <Compile Include="Controllers\TinTucController.cs" />
@@ -2072,6 +2080,8 @@
     <Content Include="Views\Home\Product_Detail.cshtml" />
     <Content Include="Views\DanhMucMonAn\Index.cshtml" />
     <Content Include="Views\BaoCao\Create.cshtml" />
+    <Content Include="Views\Ban\Index.cshtml" />
+    <Content Include="Views\Ban\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
