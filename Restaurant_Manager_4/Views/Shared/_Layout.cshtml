@@ -79,7 +79,14 @@
                     }
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="~/Home/Product_Detail">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Cart")
+                    {
+                        <li class="active">@Html.ActionLink("Cart", "Index", "Cart")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
+                    }                   
                     <li><a href="checkout.html">Checkout</a></li>
                     @if (ViewContext.RouteData.Values["Controller"].ToString() == "TinTuc")
                     {

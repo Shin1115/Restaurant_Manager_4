@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/AdminHome.cshtml";
+}
+@model PagedList.IPagedList<Restaurant_Manager_4.Models.mon_an>
+@using PagedList;
+@using PagedList.Mvc;
+<h2>Danh Sách Món Ăn</h2>
+<form action="/MonAn/Index" method="post">
+    <a style="text-align:center; display:block; float:right;" href="/MonAn/Create" class="col-sm-1 btn btn-success">Thêm mới </a>
+</form>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @*<h4 class="card-title">Inverse table</h4>
+            <p class="card-description">
+                Add class <code>.table-dark</code>
+            </p>*@
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            @*<th> ID </th>*@
+                            <th> Tên món ăn </th>
+                            <th> Giá </th>
+                            <th> Ngày thêm </th>
+                            <th> Ngày sửa </th>
+                            <th> Trạng thái </th>
+                            <th> Hình ảnh </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @foreach (var item in Model)
+                        {
+                            <tr>
+                                @*<td> @item.id </td>*@
+                                <td> @item.ten_mon_an </td>
+                                <td> @item.gia </td>
+                                <td> @String.Format("{0:dd/MM/yyyy}", item.ngay_them) </td>
+                                <td> @String.Format("{0:dd/MM/yyyy}", item.ngay_sua) </td>
+                                <td> @item.trang_thai </td>
+                                <td><img src="~/upLoad/image_Food/@item.hinh_anh" style="width:100px;height:100px;" /></td>
+                                <td class="">
+                                    <a href="/MonAn/Edit/@item.id">Sửa | </a>
+                                    <a href="/MonAn/Details/@item.id">Chi tiết | </a>
+                                    <a href="/MonAn/Delete/@item.id">Xóa | </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear">
+    Page @(Model.PageCount > Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+</div>
+<div class="btn" role="group" aria-label="Basic example">
+    <button class="btn-outline-secondary btn-dark">@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))</button>
+</div>
