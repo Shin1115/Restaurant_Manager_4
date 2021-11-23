@@ -140,6 +140,16 @@
           <Property Name="trang_thai" Type="int" />
           <Property Name="hinh_anh" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tin_tuc">
           <Key>
             <PropertyRef Name="id" />
@@ -165,7 +175,7 @@
           <Property Name="trang_thai" Type="int" />
           <Property Name="hinh_anh" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <Association Name="FK__chi_tiet___id_ba__282DF8C2">
+        <Association Name="FK__chi_tiet___id_ba__4E88ABD4">
           <End Role="ban" Type="Self.ban" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +187,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__245D67DE">
+        <Association Name="FK__chi_tiet___id_da__4AB81AF0">
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +199,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__2739D489">
+        <Association Name="FK__chi_tiet___id_da__4D94879B">
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +211,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__2EDAF651">
+        <Association Name="FK__chi_tiet___id_da__5535A963">
           <End Role="danh_muc_mon_an" Type="Self.danh_muc_mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -213,7 +223,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_ho__2DE6D218">
+        <Association Name="FK__chi_tiet___id_ho__5441852A">
           <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -225,7 +235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_kh__30C33EC3">
+        <Association Name="FK__chi_tiet___id_kh__571DF1D5">
           <End Role="khuyen_mai" Type="Self.khuyen_mai" Multiplicity="0..1" />
           <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -237,7 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__236943A5">
+        <Association Name="FK__chi_tiet___id_mo__49C3F6B7">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -249,7 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__2CF2ADDF">
+        <Association Name="FK__chi_tiet___id_mo__534D60F1">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -261,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__2FCF1A8A">
+        <Association Name="FK__chi_tiet___id_mo__5629CD9C">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -273,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__31B762FC">
+        <Association Name="FK__chi_tiet___id_mo__5812160E">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -285,7 +295,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_nh__2BFE89A6">
+        <Association Name="FK__chi_tiet___id_nh__52593CB8">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -297,7 +307,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__danh_gia___id_mo__2A164134">
+        <Association Name="FK__danh_gia___id_mo__5070F446">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -309,7 +319,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__danh_gia___id_ng__29221CFB">
+        <Association Name="FK__danh_gia___id_ng__4F7CD00D">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -321,7 +331,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban__id_nguo__25518C17">
+        <Association Name="FK__dat_ban__id_nguo__4BAC3F29">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -333,7 +343,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban__id_nhan__2645B050">
+        <Association Name="FK__dat_ban__id_nhan__4CA06362">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -345,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban_m__id_da__32AB8735">
+        <Association Name="FK__dat_ban_m__id_da__59063A47">
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
           <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
           <ReferentialConstraint>
@@ -357,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban_m__id_mo__339FAB6E">
+        <Association Name="FK__dat_ban_m__id_mo__59FA5E80">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
           <ReferentialConstraint>
@@ -369,7 +379,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_hang__id_ngu__2180FB33">
+        <Association Name="FK__dat_hang__id_ngu__47DBAE45">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +391,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_hang__id_nha__22751F6C">
+        <Association Name="FK__dat_hang__id_nha__48CFD27E">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -393,7 +403,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hoa_don__id_nguo__2B0A656D">
+        <Association Name="FK__hoa_don__id_nguo__5165187F">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -405,7 +415,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tin_tuc__id_nguo__208CD6FA">
+        <Association Name="FK__tin_tuc__id_nguo__46E78A0C">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="tin_tuc" Type="Self.tin_tuc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,89 +442,90 @@
           <EntitySet Name="hoa_don" EntityType="Self.hoa_don" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="khuyen_mai" EntityType="Self.khuyen_mai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mon_an" EntityType="Self.mon_an" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tin_tuc" EntityType="Self.tin_tuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__chi_tiet___id_ba__282DF8C2" Association="Self.FK__chi_tiet___id_ba__282DF8C2">
+          <AssociationSet Name="FK__chi_tiet___id_ba__4E88ABD4" Association="Self.FK__chi_tiet___id_ba__4E88ABD4">
             <End Role="ban" EntitySet="ban" />
             <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__245D67DE" Association="Self.FK__chi_tiet___id_da__245D67DE">
+          <AssociationSet Name="FK__chi_tiet___id_da__4AB81AF0" Association="Self.FK__chi_tiet___id_da__4AB81AF0">
             <End Role="dat_hang" EntitySet="dat_hang" />
             <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__2739D489" Association="Self.FK__chi_tiet___id_da__2739D489">
+          <AssociationSet Name="FK__chi_tiet___id_da__4D94879B" Association="Self.FK__chi_tiet___id_da__4D94879B">
             <End Role="dat_ban" EntitySet="dat_ban" />
             <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__2EDAF651" Association="Self.FK__chi_tiet___id_da__2EDAF651">
+          <AssociationSet Name="FK__chi_tiet___id_da__5535A963" Association="Self.FK__chi_tiet___id_da__5535A963">
             <End Role="danh_muc_mon_an" EntitySet="danh_muc_mon_an" />
             <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_ho__2DE6D218" Association="Self.FK__chi_tiet___id_ho__2DE6D218">
+          <AssociationSet Name="FK__chi_tiet___id_ho__5441852A" Association="Self.FK__chi_tiet___id_ho__5441852A">
             <End Role="hoa_don" EntitySet="hoa_don" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_kh__30C33EC3" Association="Self.FK__chi_tiet___id_kh__30C33EC3">
+          <AssociationSet Name="FK__chi_tiet___id_kh__571DF1D5" Association="Self.FK__chi_tiet___id_kh__571DF1D5">
             <End Role="khuyen_mai" EntitySet="khuyen_mai" />
             <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__236943A5" Association="Self.FK__chi_tiet___id_mo__236943A5">
+          <AssociationSet Name="FK__chi_tiet___id_mo__49C3F6B7" Association="Self.FK__chi_tiet___id_mo__49C3F6B7">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__2CF2ADDF" Association="Self.FK__chi_tiet___id_mo__2CF2ADDF">
+          <AssociationSet Name="FK__chi_tiet___id_mo__534D60F1" Association="Self.FK__chi_tiet___id_mo__534D60F1">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__2FCF1A8A" Association="Self.FK__chi_tiet___id_mo__2FCF1A8A">
+          <AssociationSet Name="FK__chi_tiet___id_mo__5629CD9C" Association="Self.FK__chi_tiet___id_mo__5629CD9C">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__31B762FC" Association="Self.FK__chi_tiet___id_mo__31B762FC">
+          <AssociationSet Name="FK__chi_tiet___id_mo__5812160E" Association="Self.FK__chi_tiet___id_mo__5812160E">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_nh__2BFE89A6" Association="Self.FK__chi_tiet___id_nh__2BFE89A6">
+          <AssociationSet Name="FK__chi_tiet___id_nh__52593CB8" Association="Self.FK__chi_tiet___id_nh__52593CB8">
             <End Role="user" EntitySet="user" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__danh_gia___id_mo__2A164134" Association="Self.FK__danh_gia___id_mo__2A164134">
+          <AssociationSet Name="FK__danh_gia___id_mo__5070F446" Association="Self.FK__danh_gia___id_mo__5070F446">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__danh_gia___id_ng__29221CFB" Association="Self.FK__danh_gia___id_ng__29221CFB">
+          <AssociationSet Name="FK__danh_gia___id_ng__4F7CD00D" Association="Self.FK__danh_gia___id_ng__4F7CD00D">
             <End Role="user" EntitySet="user" />
             <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban__id_nguo__25518C17" Association="Self.FK__dat_ban__id_nguo__25518C17">
+          <AssociationSet Name="FK__dat_ban__id_nguo__4BAC3F29" Association="Self.FK__dat_ban__id_nguo__4BAC3F29">
             <End Role="user" EntitySet="user" />
             <End Role="dat_ban" EntitySet="dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban__id_nhan__2645B050" Association="Self.FK__dat_ban__id_nhan__2645B050">
+          <AssociationSet Name="FK__dat_ban__id_nhan__4CA06362" Association="Self.FK__dat_ban__id_nhan__4CA06362">
             <End Role="user" EntitySet="user" />
             <End Role="dat_ban" EntitySet="dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban_m__id_da__32AB8735" Association="Self.FK__dat_ban_m__id_da__32AB8735">
+          <AssociationSet Name="FK__dat_ban_m__id_da__59063A47" Association="Self.FK__dat_ban_m__id_da__59063A47">
             <End Role="dat_ban" EntitySet="dat_ban" />
             <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban_m__id_mo__339FAB6E" Association="Self.FK__dat_ban_m__id_mo__339FAB6E">
+          <AssociationSet Name="FK__dat_ban_m__id_mo__59FA5E80" Association="Self.FK__dat_ban_m__id_mo__59FA5E80">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_hang__id_ngu__2180FB33" Association="Self.FK__dat_hang__id_ngu__2180FB33">
+          <AssociationSet Name="FK__dat_hang__id_ngu__47DBAE45" Association="Self.FK__dat_hang__id_ngu__47DBAE45">
             <End Role="user" EntitySet="user" />
             <End Role="dat_hang" EntitySet="dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_hang__id_nha__22751F6C" Association="Self.FK__dat_hang__id_nha__22751F6C">
+          <AssociationSet Name="FK__dat_hang__id_nha__48CFD27E" Association="Self.FK__dat_hang__id_nha__48CFD27E">
             <End Role="user" EntitySet="user" />
             <End Role="dat_hang" EntitySet="dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__hoa_don__id_nguo__2B0A656D" Association="Self.FK__hoa_don__id_nguo__2B0A656D">
+          <AssociationSet Name="FK__hoa_don__id_nguo__5165187F" Association="Self.FK__hoa_don__id_nguo__5165187F">
             <End Role="user" EntitySet="user" />
             <End Role="hoa_don" EntitySet="hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__tin_tuc__id_nguo__208CD6FA" Association="Self.FK__tin_tuc__id_nguo__208CD6FA">
+          <AssociationSet Name="FK__tin_tuc__id_nguo__46E78A0C" Association="Self.FK__tin_tuc__id_nguo__46E78A0C">
             <End Role="user" EntitySet="user" />
             <End Role="tin_tuc" EntitySet="tin_tuc" />
           </AssociationSet>
@@ -535,7 +546,7 @@
           <Property Name="dat_coc_toi_thieu" Type="Int32" />
           <Property Name="hinh_anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="mo_ta" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_ba__282DF8C2" FromRole="ban" ToRole="chi_tiet_dat_ban" />
+          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_ba__4E88ABD4" FromRole="ban" ToRole="chi_tiet_dat_ban" />
         </EntityType>
         <EntityType Name="chi_tiet_danh_muc">
           <Key>
@@ -544,8 +555,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_danh_muc" Type="Int32" />
           <Property Name="id_mon_an" Type="Int32" />
-          <NavigationProperty Name="danh_muc_mon_an" Relationship="Self.FK__chi_tiet___id_da__2EDAF651" FromRole="chi_tiet_danh_muc" ToRole="danh_muc_mon_an" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__2FCF1A8A" FromRole="chi_tiet_danh_muc" ToRole="mon_an" />
+          <NavigationProperty Name="danh_muc_mon_an" Relationship="Self.FK__chi_tiet___id_da__5535A963" FromRole="chi_tiet_danh_muc" ToRole="danh_muc_mon_an" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__5629CD9C" FromRole="chi_tiet_danh_muc" ToRole="mon_an" />
         </EntityType>
         <EntityType Name="chi_tiet_dat_ban">
           <Key>
@@ -554,8 +565,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_dat_ban" Type="Int32" />
           <Property Name="id_ban" Type="Int32" />
-          <NavigationProperty Name="ban" Relationship="Self.FK__chi_tiet___id_ba__282DF8C2" FromRole="chi_tiet_dat_ban" ToRole="ban" />
-          <NavigationProperty Name="dat_ban" Relationship="Self.FK__chi_tiet___id_da__2739D489" FromRole="chi_tiet_dat_ban" ToRole="dat_ban" />
+          <NavigationProperty Name="ban" Relationship="Self.FK__chi_tiet___id_ba__4E88ABD4" FromRole="chi_tiet_dat_ban" ToRole="ban" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__chi_tiet___id_da__4D94879B" FromRole="chi_tiet_dat_ban" ToRole="dat_ban" />
         </EntityType>
         <EntityType Name="chi_tiet_dat_hang">
           <Key>
@@ -565,8 +576,8 @@
           <Property Name="id_mon_an" Type="Int32" />
           <Property Name="id_dat_hang" Type="Int32" />
           <Property Name="so_luong" Type="Int32" />
-          <NavigationProperty Name="dat_hang" Relationship="Self.FK__chi_tiet___id_da__245D67DE" FromRole="chi_tiet_dat_hang" ToRole="dat_hang" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__236943A5" FromRole="chi_tiet_dat_hang" ToRole="mon_an" />
+          <NavigationProperty Name="dat_hang" Relationship="Self.FK__chi_tiet___id_da__4AB81AF0" FromRole="chi_tiet_dat_hang" ToRole="dat_hang" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__49C3F6B7" FromRole="chi_tiet_dat_hang" ToRole="mon_an" />
         </EntityType>
         <EntityType Name="chi_tiet_hoa_don">
           <Key>
@@ -577,9 +588,9 @@
           <Property Name="id_mon_an" Type="Int32" />
           <Property Name="id_hoa_don" Type="Int32" />
           <Property Name="so_luong" Type="Int32" />
-          <NavigationProperty Name="hoa_don" Relationship="Self.FK__chi_tiet___id_ho__2DE6D218" FromRole="chi_tiet_hoa_don" ToRole="hoa_don" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__2CF2ADDF" FromRole="chi_tiet_hoa_don" ToRole="mon_an" />
-          <NavigationProperty Name="user" Relationship="Self.FK__chi_tiet___id_nh__2BFE89A6" FromRole="chi_tiet_hoa_don" ToRole="user" />
+          <NavigationProperty Name="hoa_don" Relationship="Self.FK__chi_tiet___id_ho__5441852A" FromRole="chi_tiet_hoa_don" ToRole="hoa_don" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__534D60F1" FromRole="chi_tiet_hoa_don" ToRole="mon_an" />
+          <NavigationProperty Name="user" Relationship="Self.FK__chi_tiet___id_nh__52593CB8" FromRole="chi_tiet_hoa_don" ToRole="user" />
         </EntityType>
         <EntityType Name="chi_tiet_khuyen_mai">
           <Key>
@@ -588,8 +599,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_khuyen_mai" Type="Int32" />
           <Property Name="id_mon_an" Type="Int32" />
-          <NavigationProperty Name="khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__30C33EC3" FromRole="chi_tiet_khuyen_mai" ToRole="khuyen_mai" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__31B762FC" FromRole="chi_tiet_khuyen_mai" ToRole="mon_an" />
+          <NavigationProperty Name="khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__571DF1D5" FromRole="chi_tiet_khuyen_mai" ToRole="khuyen_mai" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__chi_tiet___id_mo__5812160E" FromRole="chi_tiet_khuyen_mai" ToRole="mon_an" />
         </EntityType>
         <EntityType Name="danh_gia_khach_hang">
           <Key>
@@ -600,8 +611,8 @@
           <Property Name="id_mon_an" Type="Int32" />
           <Property Name="noi_dung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="sao" Type="Int32" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__danh_gia___id_mo__2A164134" FromRole="danh_gia_khach_hang" ToRole="mon_an" />
-          <NavigationProperty Name="user" Relationship="Self.FK__danh_gia___id_ng__29221CFB" FromRole="danh_gia_khach_hang" ToRole="user" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__danh_gia___id_mo__5070F446" FromRole="danh_gia_khach_hang" ToRole="mon_an" />
+          <NavigationProperty Name="user" Relationship="Self.FK__danh_gia___id_ng__4F7CD00D" FromRole="danh_gia_khach_hang" ToRole="user" />
         </EntityType>
         <EntityType Name="danh_muc_mon_an">
           <Key>
@@ -609,7 +620,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ten_danh_muc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_da__2EDAF651" FromRole="danh_muc_mon_an" ToRole="chi_tiet_danh_muc" />
+          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_da__5535A963" FromRole="danh_muc_mon_an" ToRole="chi_tiet_danh_muc" />
         </EntityType>
         <EntityType Name="dat_ban">
           <Key>
@@ -623,10 +634,10 @@
           <Property Name="ngay_den" Type="DateTime" Precision="3" />
           <Property Name="so_luong_nguoi" Type="Int32" />
           <Property Name="trang_thai" Type="Int32" />
-          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_da__2739D489" FromRole="dat_ban" ToRole="chi_tiet_dat_ban" />
-          <NavigationProperty Name="user" Relationship="Self.FK__dat_ban__id_nguo__25518C17" FromRole="dat_ban" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="Self.FK__dat_ban__id_nhan__2645B050" FromRole="dat_ban" ToRole="user" />
-          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_da__32AB8735" FromRole="dat_ban" ToRole="dat_ban_mon_an" />
+          <NavigationProperty Name="chi_tiet_dat_ban" Relationship="Self.FK__chi_tiet___id_da__4D94879B" FromRole="dat_ban" ToRole="chi_tiet_dat_ban" />
+          <NavigationProperty Name="user" Relationship="Self.FK__dat_ban__id_nguo__4BAC3F29" FromRole="dat_ban" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__dat_ban__id_nhan__4CA06362" FromRole="dat_ban" ToRole="user" />
+          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_da__59063A47" FromRole="dat_ban" ToRole="dat_ban_mon_an" />
         </EntityType>
         <EntityType Name="dat_ban_mon_an">
           <Key>
@@ -635,8 +646,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_dat_ban" Type="Int32" />
           <Property Name="id_mon_an" Type="Int32" />
-          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban_m__id_da__32AB8735" FromRole="dat_ban_mon_an" ToRole="dat_ban" />
-          <NavigationProperty Name="mon_an" Relationship="Self.FK__dat_ban_m__id_mo__339FAB6E" FromRole="dat_ban_mon_an" ToRole="mon_an" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban_m__id_da__59063A47" FromRole="dat_ban_mon_an" ToRole="dat_ban" />
+          <NavigationProperty Name="mon_an" Relationship="Self.FK__dat_ban_m__id_mo__59FA5E80" FromRole="dat_ban_mon_an" ToRole="mon_an" />
         </EntityType>
         <EntityType Name="dat_hang">
           <Key>
@@ -648,9 +659,9 @@
           <Property Name="ngay_dat" Type="DateTime" Precision="3" />
           <Property Name="tien_coc_truoc" Type="Int32" />
           <Property Name="trang_thai" Type="Int32" />
-          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_da__245D67DE" FromRole="dat_hang" ToRole="chi_tiet_dat_hang" />
-          <NavigationProperty Name="user" Relationship="Self.FK__dat_hang__id_ngu__2180FB33" FromRole="dat_hang" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="Self.FK__dat_hang__id_nha__22751F6C" FromRole="dat_hang" ToRole="user" />
+          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_da__4AB81AF0" FromRole="dat_hang" ToRole="chi_tiet_dat_hang" />
+          <NavigationProperty Name="user" Relationship="Self.FK__dat_hang__id_ngu__47DBAE45" FromRole="dat_hang" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__dat_hang__id_nha__48CFD27E" FromRole="dat_hang" ToRole="user" />
         </EntityType>
         <EntityType Name="hoa_don">
           <Key>
@@ -660,8 +671,8 @@
           <Property Name="id_nguoi_dung" Type="Int32" />
           <Property Name="ngay_tao" Type="DateTime" Precision="3" />
           <Property Name="trang_thai" Type="Int32" />
-          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_ho__2DE6D218" FromRole="hoa_don" ToRole="chi_tiet_hoa_don" />
-          <NavigationProperty Name="user" Relationship="Self.FK__hoa_don__id_nguo__2B0A656D" FromRole="hoa_don" ToRole="user" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_ho__5441852A" FromRole="hoa_don" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="user" Relationship="Self.FK__hoa_don__id_nguo__5165187F" FromRole="hoa_don" ToRole="user" />
         </EntityType>
         <EntityType Name="khuyen_mai">
           <Key>
@@ -672,7 +683,7 @@
           <Property Name="bat_dau" Type="DateTime" Precision="3" />
           <Property Name="ket_thuc" Type="DateTime" Precision="3" />
           <Property Name="phan_tram_giam" Type="Int32" />
-          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__30C33EC3" FromRole="khuyen_mai" ToRole="chi_tiet_khuyen_mai" />
+          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_kh__571DF1D5" FromRole="khuyen_mai" ToRole="chi_tiet_khuyen_mai" />
         </EntityType>
         <EntityType Name="mon_an">
           <Key>
@@ -685,12 +696,22 @@
           <Property Name="ngay_sua" Type="DateTime" Precision="3" />
           <Property Name="trang_thai" Type="Int32" />
           <Property Name="hinh_anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_mo__2FCF1A8A" FromRole="mon_an" ToRole="chi_tiet_danh_muc" />
-          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_mo__236943A5" FromRole="mon_an" ToRole="chi_tiet_dat_hang" />
-          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_mo__2CF2ADDF" FromRole="mon_an" ToRole="chi_tiet_hoa_don" />
-          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_mo__31B762FC" FromRole="mon_an" ToRole="chi_tiet_khuyen_mai" />
-          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_mo__2A164134" FromRole="mon_an" ToRole="danh_gia_khach_hang" />
-          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_mo__339FAB6E" FromRole="mon_an" ToRole="dat_ban_mon_an" />
+          <NavigationProperty Name="chi_tiet_danh_muc" Relationship="Self.FK__chi_tiet___id_mo__5629CD9C" FromRole="mon_an" ToRole="chi_tiet_danh_muc" />
+          <NavigationProperty Name="chi_tiet_dat_hang" Relationship="Self.FK__chi_tiet___id_mo__49C3F6B7" FromRole="mon_an" ToRole="chi_tiet_dat_hang" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_mo__534D60F1" FromRole="mon_an" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="chi_tiet_khuyen_mai" Relationship="Self.FK__chi_tiet___id_mo__5812160E" FromRole="mon_an" ToRole="chi_tiet_khuyen_mai" />
+          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_mo__5070F446" FromRole="mon_an" ToRole="danh_gia_khach_hang" />
+          <NavigationProperty Name="dat_ban_mon_an" Relationship="Self.FK__dat_ban_m__id_mo__59FA5E80" FromRole="mon_an" ToRole="dat_ban_mon_an" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="tin_tuc">
           <Key>
@@ -701,7 +722,7 @@
           <Property Name="tieu_de" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="noi_dung" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="id_nguoi_viet" Type="Int32" />
-          <NavigationProperty Name="user" Relationship="Self.FK__tin_tuc__id_nguo__208CD6FA" FromRole="tin_tuc" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="Self.FK__tin_tuc__id_nguo__46E78A0C" FromRole="tin_tuc" ToRole="user" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -717,16 +738,16 @@
           <Property Name="vai_tro" Type="Int32" />
           <Property Name="trang_thai" Type="Int32" />
           <Property Name="hinh_anh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_nh__2BFE89A6" FromRole="user" ToRole="chi_tiet_hoa_don" />
-          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_ng__29221CFB" FromRole="user" ToRole="danh_gia_khach_hang" />
-          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban__id_nguo__25518C17" FromRole="user" ToRole="dat_ban" />
-          <NavigationProperty Name="dat_ban1" Relationship="Self.FK__dat_ban__id_nhan__2645B050" FromRole="user" ToRole="dat_ban" />
-          <NavigationProperty Name="dat_hang" Relationship="Self.FK__dat_hang__id_ngu__2180FB33" FromRole="user" ToRole="dat_hang" />
-          <NavigationProperty Name="dat_hang1" Relationship="Self.FK__dat_hang__id_nha__22751F6C" FromRole="user" ToRole="dat_hang" />
-          <NavigationProperty Name="hoa_don" Relationship="Self.FK__hoa_don__id_nguo__2B0A656D" FromRole="user" ToRole="hoa_don" />
-          <NavigationProperty Name="tin_tuc" Relationship="Self.FK__tin_tuc__id_nguo__208CD6FA" FromRole="user" ToRole="tin_tuc" />
+          <NavigationProperty Name="chi_tiet_hoa_don" Relationship="Self.FK__chi_tiet___id_nh__52593CB8" FromRole="user" ToRole="chi_tiet_hoa_don" />
+          <NavigationProperty Name="danh_gia_khach_hang" Relationship="Self.FK__danh_gia___id_ng__4F7CD00D" FromRole="user" ToRole="danh_gia_khach_hang" />
+          <NavigationProperty Name="dat_ban" Relationship="Self.FK__dat_ban__id_nguo__4BAC3F29" FromRole="user" ToRole="dat_ban" />
+          <NavigationProperty Name="dat_ban1" Relationship="Self.FK__dat_ban__id_nhan__4CA06362" FromRole="user" ToRole="dat_ban" />
+          <NavigationProperty Name="dat_hang" Relationship="Self.FK__dat_hang__id_ngu__47DBAE45" FromRole="user" ToRole="dat_hang" />
+          <NavigationProperty Name="dat_hang1" Relationship="Self.FK__dat_hang__id_nha__48CFD27E" FromRole="user" ToRole="dat_hang" />
+          <NavigationProperty Name="hoa_don" Relationship="Self.FK__hoa_don__id_nguo__5165187F" FromRole="user" ToRole="hoa_don" />
+          <NavigationProperty Name="tin_tuc" Relationship="Self.FK__tin_tuc__id_nguo__46E78A0C" FromRole="user" ToRole="tin_tuc" />
         </EntityType>
-        <Association Name="FK__chi_tiet___id_ba__282DF8C2">
+        <Association Name="FK__chi_tiet___id_ba__4E88ABD4">
           <End Role="ban" Type="Self.ban" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -738,7 +759,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__2EDAF651">
+        <Association Name="FK__chi_tiet___id_da__5535A963">
           <End Role="danh_muc_mon_an" Type="Self.danh_muc_mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -750,7 +771,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__2FCF1A8A">
+        <Association Name="FK__chi_tiet___id_mo__5629CD9C">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_danh_muc" Type="Self.chi_tiet_danh_muc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -762,7 +783,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__2739D489">
+        <Association Name="FK__chi_tiet___id_da__4D94879B">
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_ban" Type="Self.chi_tiet_dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -774,7 +795,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_da__245D67DE">
+        <Association Name="FK__chi_tiet___id_da__4AB81AF0">
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -786,7 +807,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__236943A5">
+        <Association Name="FK__chi_tiet___id_mo__49C3F6B7">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_dat_hang" Type="Self.chi_tiet_dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -798,7 +819,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_ho__2DE6D218">
+        <Association Name="FK__chi_tiet___id_ho__5441852A">
           <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -810,7 +831,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__2CF2ADDF">
+        <Association Name="FK__chi_tiet___id_mo__534D60F1">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -822,7 +843,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_nh__2BFE89A6">
+        <Association Name="FK__chi_tiet___id_nh__52593CB8">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="chi_tiet_hoa_don" Type="Self.chi_tiet_hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -834,7 +855,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_kh__30C33EC3">
+        <Association Name="FK__chi_tiet___id_kh__571DF1D5">
           <End Role="khuyen_mai" Type="Self.khuyen_mai" Multiplicity="0..1" />
           <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -846,7 +867,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__chi_tiet___id_mo__31B762FC">
+        <Association Name="FK__chi_tiet___id_mo__5812160E">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="chi_tiet_khuyen_mai" Type="Self.chi_tiet_khuyen_mai" Multiplicity="*" />
           <ReferentialConstraint>
@@ -858,7 +879,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__danh_gia___id_mo__2A164134">
+        <Association Name="FK__danh_gia___id_mo__5070F446">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -870,7 +891,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__danh_gia___id_ng__29221CFB">
+        <Association Name="FK__danh_gia___id_ng__4F7CD00D">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="danh_gia_khach_hang" Type="Self.danh_gia_khach_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -882,7 +903,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban__id_nguo__25518C17">
+        <Association Name="FK__dat_ban__id_nguo__4BAC3F29">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -894,7 +915,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban__id_nhan__2645B050">
+        <Association Name="FK__dat_ban__id_nhan__4CA06362">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="*" />
           <ReferentialConstraint>
@@ -906,7 +927,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban_m__id_da__32AB8735">
+        <Association Name="FK__dat_ban_m__id_da__59063A47">
           <End Role="dat_ban" Type="Self.dat_ban" Multiplicity="0..1" />
           <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
           <ReferentialConstraint>
@@ -918,7 +939,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_ban_m__id_mo__339FAB6E">
+        <Association Name="FK__dat_ban_m__id_mo__59FA5E80">
           <End Role="mon_an" Type="Self.mon_an" Multiplicity="0..1" />
           <End Role="dat_ban_mon_an" Type="Self.dat_ban_mon_an" Multiplicity="*" />
           <ReferentialConstraint>
@@ -930,7 +951,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_hang__id_ngu__2180FB33">
+        <Association Name="FK__dat_hang__id_ngu__47DBAE45">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -942,7 +963,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__dat_hang__id_nha__22751F6C">
+        <Association Name="FK__dat_hang__id_nha__48CFD27E">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="dat_hang" Type="Self.dat_hang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -954,7 +975,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hoa_don__id_nguo__2B0A656D">
+        <Association Name="FK__hoa_don__id_nguo__5165187F">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="*" />
           <ReferentialConstraint>
@@ -966,7 +987,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tin_tuc__id_nguo__208CD6FA">
+        <Association Name="FK__tin_tuc__id_nguo__46E78A0C">
           <End Role="user" Type="Self.user" Multiplicity="0..1" />
           <End Role="tin_tuc" Type="Self.tin_tuc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -993,89 +1014,90 @@
           <EntitySet Name="hoa_don" EntityType="Self.hoa_don" />
           <EntitySet Name="khuyen_mai" EntityType="Self.khuyen_mai" />
           <EntitySet Name="mon_an" EntityType="Self.mon_an" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tin_tuc" EntityType="Self.tin_tuc" />
           <EntitySet Name="users" EntityType="Self.user" />
-          <AssociationSet Name="FK__chi_tiet___id_ba__282DF8C2" Association="Self.FK__chi_tiet___id_ba__282DF8C2">
+          <AssociationSet Name="FK__chi_tiet___id_ba__4E88ABD4" Association="Self.FK__chi_tiet___id_ba__4E88ABD4">
             <End Role="ban" EntitySet="bans" />
             <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__2EDAF651" Association="Self.FK__chi_tiet___id_da__2EDAF651">
+          <AssociationSet Name="FK__chi_tiet___id_da__5535A963" Association="Self.FK__chi_tiet___id_da__5535A963">
             <End Role="danh_muc_mon_an" EntitySet="danh_muc_mon_an" />
             <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__2FCF1A8A" Association="Self.FK__chi_tiet___id_mo__2FCF1A8A">
+          <AssociationSet Name="FK__chi_tiet___id_mo__5629CD9C" Association="Self.FK__chi_tiet___id_mo__5629CD9C">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_danh_muc" EntitySet="chi_tiet_danh_muc" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__2739D489" Association="Self.FK__chi_tiet___id_da__2739D489">
+          <AssociationSet Name="FK__chi_tiet___id_da__4D94879B" Association="Self.FK__chi_tiet___id_da__4D94879B">
             <End Role="dat_ban" EntitySet="dat_ban" />
             <End Role="chi_tiet_dat_ban" EntitySet="chi_tiet_dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_da__245D67DE" Association="Self.FK__chi_tiet___id_da__245D67DE">
+          <AssociationSet Name="FK__chi_tiet___id_da__4AB81AF0" Association="Self.FK__chi_tiet___id_da__4AB81AF0">
             <End Role="dat_hang" EntitySet="dat_hang" />
             <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__236943A5" Association="Self.FK__chi_tiet___id_mo__236943A5">
+          <AssociationSet Name="FK__chi_tiet___id_mo__49C3F6B7" Association="Self.FK__chi_tiet___id_mo__49C3F6B7">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_dat_hang" EntitySet="chi_tiet_dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_ho__2DE6D218" Association="Self.FK__chi_tiet___id_ho__2DE6D218">
+          <AssociationSet Name="FK__chi_tiet___id_ho__5441852A" Association="Self.FK__chi_tiet___id_ho__5441852A">
             <End Role="hoa_don" EntitySet="hoa_don" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__2CF2ADDF" Association="Self.FK__chi_tiet___id_mo__2CF2ADDF">
+          <AssociationSet Name="FK__chi_tiet___id_mo__534D60F1" Association="Self.FK__chi_tiet___id_mo__534D60F1">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_nh__2BFE89A6" Association="Self.FK__chi_tiet___id_nh__2BFE89A6">
+          <AssociationSet Name="FK__chi_tiet___id_nh__52593CB8" Association="Self.FK__chi_tiet___id_nh__52593CB8">
             <End Role="user" EntitySet="users" />
             <End Role="chi_tiet_hoa_don" EntitySet="chi_tiet_hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_kh__30C33EC3" Association="Self.FK__chi_tiet___id_kh__30C33EC3">
+          <AssociationSet Name="FK__chi_tiet___id_kh__571DF1D5" Association="Self.FK__chi_tiet___id_kh__571DF1D5">
             <End Role="khuyen_mai" EntitySet="khuyen_mai" />
             <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
           </AssociationSet>
-          <AssociationSet Name="FK__chi_tiet___id_mo__31B762FC" Association="Self.FK__chi_tiet___id_mo__31B762FC">
+          <AssociationSet Name="FK__chi_tiet___id_mo__5812160E" Association="Self.FK__chi_tiet___id_mo__5812160E">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="chi_tiet_khuyen_mai" EntitySet="chi_tiet_khuyen_mai" />
           </AssociationSet>
-          <AssociationSet Name="FK__danh_gia___id_mo__2A164134" Association="Self.FK__danh_gia___id_mo__2A164134">
+          <AssociationSet Name="FK__danh_gia___id_mo__5070F446" Association="Self.FK__danh_gia___id_mo__5070F446">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__danh_gia___id_ng__29221CFB" Association="Self.FK__danh_gia___id_ng__29221CFB">
+          <AssociationSet Name="FK__danh_gia___id_ng__4F7CD00D" Association="Self.FK__danh_gia___id_ng__4F7CD00D">
             <End Role="user" EntitySet="users" />
             <End Role="danh_gia_khach_hang" EntitySet="danh_gia_khach_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban__id_nguo__25518C17" Association="Self.FK__dat_ban__id_nguo__25518C17">
+          <AssociationSet Name="FK__dat_ban__id_nguo__4BAC3F29" Association="Self.FK__dat_ban__id_nguo__4BAC3F29">
             <End Role="user" EntitySet="users" />
             <End Role="dat_ban" EntitySet="dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban__id_nhan__2645B050" Association="Self.FK__dat_ban__id_nhan__2645B050">
+          <AssociationSet Name="FK__dat_ban__id_nhan__4CA06362" Association="Self.FK__dat_ban__id_nhan__4CA06362">
             <End Role="user" EntitySet="users" />
             <End Role="dat_ban" EntitySet="dat_ban" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban_m__id_da__32AB8735" Association="Self.FK__dat_ban_m__id_da__32AB8735">
+          <AssociationSet Name="FK__dat_ban_m__id_da__59063A47" Association="Self.FK__dat_ban_m__id_da__59063A47">
             <End Role="dat_ban" EntitySet="dat_ban" />
             <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_ban_m__id_mo__339FAB6E" Association="Self.FK__dat_ban_m__id_mo__339FAB6E">
+          <AssociationSet Name="FK__dat_ban_m__id_mo__59FA5E80" Association="Self.FK__dat_ban_m__id_mo__59FA5E80">
             <End Role="mon_an" EntitySet="mon_an" />
             <End Role="dat_ban_mon_an" EntitySet="dat_ban_mon_an" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_hang__id_ngu__2180FB33" Association="Self.FK__dat_hang__id_ngu__2180FB33">
+          <AssociationSet Name="FK__dat_hang__id_ngu__47DBAE45" Association="Self.FK__dat_hang__id_ngu__47DBAE45">
             <End Role="user" EntitySet="users" />
             <End Role="dat_hang" EntitySet="dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__dat_hang__id_nha__22751F6C" Association="Self.FK__dat_hang__id_nha__22751F6C">
+          <AssociationSet Name="FK__dat_hang__id_nha__48CFD27E" Association="Self.FK__dat_hang__id_nha__48CFD27E">
             <End Role="user" EntitySet="users" />
             <End Role="dat_hang" EntitySet="dat_hang" />
           </AssociationSet>
-          <AssociationSet Name="FK__hoa_don__id_nguo__2B0A656D" Association="Self.FK__hoa_don__id_nguo__2B0A656D">
+          <AssociationSet Name="FK__hoa_don__id_nguo__5165187F" Association="Self.FK__hoa_don__id_nguo__5165187F">
             <End Role="user" EntitySet="users" />
             <End Role="hoa_don" EntitySet="hoa_don" />
           </AssociationSet>
-          <AssociationSet Name="FK__tin_tuc__id_nguo__208CD6FA" Association="Self.FK__tin_tuc__id_nguo__208CD6FA">
+          <AssociationSet Name="FK__tin_tuc__id_nguo__46E78A0C" Association="Self.FK__tin_tuc__id_nguo__46E78A0C">
             <End Role="user" EntitySet="users" />
             <End Role="tin_tuc" EntitySet="tin_tuc" />
           </AssociationSet>
@@ -1232,6 +1254,17 @@
                 <ScalarProperty Name="ngay_sua" ColumnName="ngay_sua" />
                 <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
                 <ScalarProperty Name="hinh_anh" ColumnName="hinh_anh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="quan_ly_nha_hangModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
