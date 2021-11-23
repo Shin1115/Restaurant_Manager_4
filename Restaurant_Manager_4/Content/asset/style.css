@@ -12,13 +12,8 @@
     ##### - PLACE YOUR CUSTOM CSS HERE - #####
     --------------------------------------- */
 
-@font-face {
-    font-family: 'glyphicons-halflings-regular';
-    src: url('../../fonts/glyphicons-halflings-regular.ttf') format('truetype');
-}
-
 * {
-    font-family: glyphicons-halflings-regular, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .single-products-catagory a img {
@@ -29,10 +24,6 @@
     flex-direction: column;
     padding: 2px;
     border-radius: 8px;
-}
-
-.single-products-catagory .hover-content h4 {
-    font-family: glyphicons-halflings-regular, sans-serif;
 }
 
 a {

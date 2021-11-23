@@ -4,66 +4,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Tin tức</title>
-</head>
-<body>
-    @if (!string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
+@if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Tạo tin tức", "Create", "TinTucController", new { @class = "btn amado-btn mb-15" })
+}
+@if (Model.Count() == 0)
+{
+    <p>Chưa có bài viết nào ở đây cả</p>
+}
+else
+{
+    <h1 class="news-title">Danh sách các tin</h1>
+    <div class="news-container">
+    @foreach (var item in Model)
     {
-        @Html.ActionLink("Tạo tin tức", "Create", "TinTucController", new { @class = "btn amado-btn mb-15" })
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.tieu_de)</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.user.ten_nguoi_dung) | @Html.DisplayFor(modelItem => item.ngay_viet)</h6>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.noi_dung)</p>
+            </div>
+        </div>
+        if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+        {
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </div>
+        }
     }
-    @if (Model.Count() == 0)
-    {
-        <p>Chưa có bài viết nào ở đây cả</p>
-    }
-    else
-    {
-        <table class="table">
-            <tr>
-                <th>
-                    Ngày viết
-                    @Html.DisplayNameFor(model => model.ngay_viet)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.tieu_de)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.noi_dung)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.user.ten_nguoi_dung)
-                </th>
-                <th></th>
-            </tr>
+    </div>
+}
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ngay_viet)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tieu_de)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.noi_dung)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.user.ten_nguoi_dung)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
-                    </td>
-                </tr>
-            }
-
-        </table>
+<style>
+    .news-title {
+        font-weight: bold;
     }
-</body>
-</html>
+    .news-container {
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    h5.card-title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    h6.card-subtitle {
+        font-size: 1.5rem;
+    }
+</style>
