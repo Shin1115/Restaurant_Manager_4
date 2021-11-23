@@ -1,0 +1,73 @@
+﻿@model Restaurant_Manager_4.Models.mon_an
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Admin/AdminHome.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>mon_an</h4>
+    <hr />
+    <dl class="dl-horizontal table table-dark">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten_mon_an)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten_mon_an)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngay_them)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngay_them)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngay_sua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngay_sua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trang_thai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trang_thai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinh_anh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinh_anh)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

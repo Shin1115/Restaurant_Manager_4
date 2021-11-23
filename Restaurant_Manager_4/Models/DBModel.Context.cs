@@ -39,6 +39,7 @@ namespace Restaurant_Manager_4.Models
         public virtual DbSet<hoa_don> hoa_don { get; set; }
         public virtual DbSet<khuyen_mai> khuyen_mai { get; set; }
         public virtual DbSet<mon_an> mon_an { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tin_tuc> tin_tuc { get; set; }
         public virtual DbSet<user> users { get; set; }
     }

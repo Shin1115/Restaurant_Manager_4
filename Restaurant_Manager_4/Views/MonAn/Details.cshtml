@@ -1,0 +1,67 @@
+﻿@model Restaurant_Manager_4.Models.mon_an
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Admin/AdminHome.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>mon_an</h4>
+    <hr />
+    <dl class="vertical">
+        <dt>
+            Tên món ăn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten_mon_an)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            Ngày Thêm
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.ngay_them)
+        </dd>
+
+        <dt>
+            Ngày sửa
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.ngay_sua)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trang_thai)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinh_anh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
