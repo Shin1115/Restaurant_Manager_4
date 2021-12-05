@@ -88,7 +88,7 @@
                     else
                     {
                         <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                    }                   
+                    }
                     <li><a href="checkout.html">Checkout</a></li>
                     @if (ViewContext.RouteData.Values["Controller"].ToString() == "TinTuc")
                     {
@@ -98,17 +98,28 @@
                     {
                         <li>@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
                     }
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+                    {
+                        if (ViewContext.RouteData.Values["Controller"].ToString() == "Ban")
+                        {
+                            <li class="active">@Html.ActionLink("Quản lý bàn", "Index", "Ban")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Quản lý bàn", "Index", "Ban")</li>
+                        }
+                    }
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
                 @if (System.Web.HttpContext.Current.User.Identity.Name != "")
                 {
-                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
+                    <a href="@Url.Action("Index","DatBan")" class="btn amado-btn mb-15">Đặt bàn</a>
                 }
                 else
                 {
-                    <a href="@Url.Action("Login","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
+                    <a href="@Url.Action("SignIn","Account")" class="btn amado-btn mb-15">Đăng ký</a>
                 }
                 @if (System.Web.HttpContext.Current.User.Identity.Name != "")
                 {

@@ -1,0 +1,163 @@
+﻿@using Restaurant_Manager_4.DTO;
+@model Restaurant_Manager_4.Requests.DatBanRequest
+@{
+    ViewBag.Title = "ChonMonAn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var baseurl = Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Url.Content("~");
+}
+
+
+<div class="container">
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-4">
+            <h1>Danh sách các bàn đã chọn</h1>
+            <a class="btn amado-btn mb-15" href="/">Xoá hết</a>
+            <a class="btn amado-btn mb-15" href="/">Thêm bàn</a>
+            <div class="">
+                @foreach (BanDTO item in ViewBag.banDTOs as List<BanDTO>)
+                {
+                    <div class="table-item">
+                        <span class="table-name">@item.ten_ban</span>
+                        <img class="table-image" src="@baseurl@item.hinh_anh" alt="Alternate Text" />
+
+                        <div class="util-btn-container">
+                            <a class="table-btn main-btn" href="/">Xoá</a>
+                            <a class="table-btn side-btn" href="/">Chi tiết</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h1>Danh sách các món đã chọn</h1>
+            <a class="btn amado-btn mb-15" href="/">Xoá hết</a>
+            <a class="btn amado-btn mb-15" href="/">Thêm món</a>
+            <div class="">
+                @foreach (BanDTO item in ViewBag.banDTOs as List<BanDTO>)
+                {
+                    <div class="table-item">
+                        <span class="table-name">@item.ten_ban</span>
+                        <img class="table-image" src="@baseurl@item.hinh_anh" alt="Alternate Text" />
+
+                        <div class="util-btn-container">
+                            <a class="table-btn main-btn" href="/">Xoá</a>
+                            <a class="table-btn side-btn" href="/">Chi tiết</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Các thông tin liên quan</h1>
+            @using (Html.BeginForm("Create", "DatBan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ngay_dat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ngay_dat, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ngay_dat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.tien_coc_truoc, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tien_coc_truoc, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.tien_coc_truoc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Tạo mới" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="btn amado-btn mb-15" href="/">Hoàn tất đặt bàn</a>
+            <a class="btn amado-btn mb-15" href="/">Thoát</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table-item {
+        position: relative;
+    }
+
+    .table-name {
+        display: inline-block;
+        background-color: #fbb710;
+        height: 5rem;
+        padding: 10px;
+        color: white;
+        position: absolute;
+    }
+
+    .table-image {
+        height: 5rem;
+        width: 100%;
+        object-fit: cover;
+        transition: all 0.3s;
+    }
+
+    .util-btn-container {
+        margin-top: 10px;
+        display: flex;
+        height: 0px;
+        transition: all 0.3s;
+    }
+
+        .util-btn-container a {
+            padding: 0px;
+            height: 0rem;
+        }
+
+    .table-btn {
+        flex-grow: 1;
+        color: white !important;
+        text-align: center;
+        transition: all .3s;
+    }
+
+        .table-btn:hover {
+            background-color: #fbb710;
+        }
+
+    .main-btn {
+        background-color: black;
+    }
+
+    .side-btn {
+        background-color: black;
+    }
+
+    .table-item:hover > .table-image {
+        height: 20rem;
+    }
+
+    .table-item:hover > .util-btn-container {
+        height: 5rem;
+    }
+
+        .table-item:hover > .util-btn-container > a {
+            padding: 10px;
+            height: 80%;
+            color: white;
+        }
+</style>
+
+<script>
+
+</script>
