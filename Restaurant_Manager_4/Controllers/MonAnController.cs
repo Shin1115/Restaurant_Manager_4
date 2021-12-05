@@ -5,7 +5,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
-using PagedList.Mvc;
 using PagedList;
 using System.IO;
 using Restaurant_Manager_4.Models;
