@@ -10,6 +10,12 @@ namespace Restaurant_Manager_4
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "DatBanController",
+                url: "DatBan/ChonMonAn/{idBan}",
+                defaults: new { controller = "Datban", action = "ChonMonAn", idBan = UrlParameter.Optional}
+                );
+
+            routes.MapRoute(
                 name: "BaoCaoThongKe",
                 url: "BaoCaoThongKe/{action}/{id}",
                 defaults: new { controller = "BaoCao", action = "Index", id = UrlParameter.Optional }
