@@ -55,6 +55,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -132,15 +138,22 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BanController.cs" />
-    <Compile Include="Controllers\BaoCaoController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DanhMucMonAnController.cs" />
+    <Compile Include="Controllers\DatBanController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MonAnController.cs" />
     <Compile Include="DTO\BanDTO.cs" />
+    <Compile Include="DTO\DatBanDTO.cs" />
+    <Compile Include="DTO\MonAnDTO.cs" />
     <Compile Include="Enums\ETrangThaiBan.cs" />
+    <Compile Include="Enums\ETrangThaiMonAn.cs" />
     <Compile Include="Helpers\EnumExtensionMethods.cs" />
     <Compile Include="Helpers\Selectlists.cs" />
+    <Compile Include="Helpers\TimeHelper.cs" />
     <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\LoginView.cs" />
     <Compile Include="Controllers\TinTucController.cs" />
@@ -155,17 +168,14 @@
     <Compile Include="Infrastructure\RegistrationView.cs" />
     <Compile Include="Infrastructure\UserRole.cs" />
     <Compile Include="Infrastructure\Utils\UserRoleConverter.cs" />
+    <Compile Include="ModelMappers\ModelMappers.cs" />
     <Compile Include="Models\ban.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaoCaoThongKe.cs" />
     <Compile Include="Models\chi_tiet_danh_muc.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\chi_tiet_dat_ban.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\chi_tiet_dat_hang.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\chi_tiet_hoa_don.cs">
@@ -184,9 +194,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\dat_ban_mon_an.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\dat_hang.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DBModel.Context.cs">
@@ -220,6 +227,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\BanRequest.cs" />
+    <Compile Include="Requests\DatBanRequest.cs" />
+    <Compile Include="SerializableObjects\DatMonAnSessionData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\asset-login\css\login-view\admin.css" />
@@ -1958,13 +1968,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\asset-login\css\login-view\login.css.map" />
     <Content Include="Content\asset-login\css\login-view\login.scss" />
     <Content Include="Content\asset-login\fonts\fontawesome-free-5.15.4\fontawesome-free-5.15.4-web\less\brands.less" />
@@ -2043,6 +2046,13 @@
     <Content Include="Content\asset\scss\_responsive.scss" />
     <Content Include="Content\asset\scss\_theme_color.scss" />
     <Content Include="Content\asset\scss\_variables.scss" />
+    <EntityDeploy Include="Models\DBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBModel.edmx.diagram">
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2054,7 +2064,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="upload\image_Food\ma1.jpg" />
+    <Content Include="upload\image_Food\ma11.jpg" />
+    <Content Include="upload\image_Food\ma12.jpg" />
+    <Content Include="upload\image_Food\ma2.jpg" />
+    <Content Include="upload\image_Food\ma3.jpg" />
+    <Content Include="upload\image_Food\ma4.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2082,9 +2100,22 @@
     <Content Include="Views\BaoCao\Create.cshtml" />
     <Content Include="Views\Ban\Index.cshtml" />
     <Content Include="Views\Ban\Create.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
+    <Content Include="Views\MonAn\Create.cshtml" />
+    <Content Include="Views\MonAn\Delete.cshtml" />
+    <Content Include="Views\MonAn\Details.cshtml" />
+    <Content Include="Views\MonAn\Edit.cshtml" />
+    <Content Include="Views\MonAn\Index.cshtml" />
+    <Content Include="Views\Ban\Delete.cshtml" />
+    <Content Include="Views\Ban\Edit.cshtml" />
+    <Content Include="Views\Ban\Details.cshtml" />
+    <Content Include="Views\DatBan\Index.cshtml" />
+    <Content Include="Views\DatBan\ChonMonAn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="upload\image_Ban\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2120,9 +2151,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61520</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61520/</IISUrl>
+          <IISUrl>http://localhost:51747/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

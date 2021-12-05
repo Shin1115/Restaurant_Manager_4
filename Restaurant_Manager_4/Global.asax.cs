@@ -27,18 +27,25 @@ namespace Restaurant_Manager_4
             HttpCookie authCookie = Request.Cookies["Authentication"];
             if (authCookie != null)
             {
-                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                try
+                {
+                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
-                CustomSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
-                CustomPrincipal principal = new CustomPrincipal(authTicket.Name);
-                principal.UserId = serializeModel.UserId;
-                principal.FullName = serializeModel.FullName;
-                principal.UserName = serializeModel.Username;
-                principal.PhoneNumber = serializeModel.PhoneNumber;
-                principal.Email = serializeModel.Email;
-                principal.Roles = serializeModel.RoleName.ToArray<string>();
+                    CustomSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
+                    CustomPrincipal principal = new CustomPrincipal(authTicket.Name);
+                    principal.UserId = serializeModel.UserId;
+                    principal.FullName = serializeModel.FullName;
+                    principal.UserName = serializeModel.Username;
+                    principal.PhoneNumber = serializeModel.PhoneNumber;
+                    principal.Email = serializeModel.Email;
+                    principal.Roles = serializeModel.RoleName.ToArray<string>();
 
-                HttpContext.Current.User = principal;
+                    HttpContext.Current.User = principal;
+                }
+                catch
+                {
+
+                }
             }
         }
     }
