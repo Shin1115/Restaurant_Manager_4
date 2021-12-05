@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Admin\source\repos\Restaurant_Manager_4\Restaurant_Manager_4\Models\DBModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\truon\Source\Repos\Restaurant_Manager_42\Restaurant_Manager_4\Models\DBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

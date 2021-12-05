@@ -17,6 +17,7 @@ namespace Restaurant_Manager_4.Models
         public int id { get; set; }
         public Nullable<int> id_khuyen_mai { get; set; }
         public Nullable<int> id_mon_an { get; set; }
+        public Nullable<int> phan_tram_giam { get; set; }
     
         public virtual khuyen_mai khuyen_mai { get; set; }
         public virtual mon_an mon_an { get; set; }
