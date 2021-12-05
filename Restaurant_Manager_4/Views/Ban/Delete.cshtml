@@ -1,0 +1,73 @@
+﻿@model Restaurant_Manager_4.DTO.BanDTO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xoá</h2>
+
+<h3>Bạn có chắc là muốn xoá bàn này?</h3>
+<div>
+    <h4>@Html.DisplayFor(model => model.ten_ban)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên bàn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten_ban)
+        </dd>
+
+        <dt>
+            Chỗ ngồi tối đa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cho_ngoi_toi_da)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trang_thai)
+        </dd>
+
+        <dt>
+           Đặt cọc tối thiểu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dat_coc_toi_thieu)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinh_anh)
+        </dd>
+
+        <dt>
+            Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mo_ta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
