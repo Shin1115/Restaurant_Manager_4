@@ -18,7 +18,10 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Styles.Render("~/Content/asset/css/core-style.css")
     @Styles.Render("~/Content/asset/style.css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+
 </head>
 <body>
     <!-- Search Wrapper Area Start -->
@@ -234,5 +237,13 @@
     <script src="~/Content/asset/js/plugins.js"></script>
     <!-- Active js -->
     <script src="~/Content/asset/js/active.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
+    <script type="text/javascript" src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
 </body>
 </html>

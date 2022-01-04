@@ -14,11 +14,11 @@
     @foreach (var item in Model)
     {
         <div class="table">
-            <img class="ban-image" src="@item.hinh_anh" alt="">
+            <img class="ban-image" src="http://localhost:51747/@item.hinh_anh" alt="">
             <div class="content">
-                <p>Đặt cọc tối thiểu <span>@item.dat_coc_toi_thieu</span></p>
+                <p class="dat-coc-toi-thieu-content">Đặt cọc tối thiểu <span class="font-bold">@item.dat_coc_toi_thieu</span></p>
                 <h4>@item.ten_ban</h4>
-                @Html.ActionLink("Đặt bàn", "ChonMonAn", new { idBan = item.id }, new { @class = "order-button" })
+                @Html.ActionLink("Đặt bàn", "ThemBan", new { idBan = item.id }, new { @class = "order-button" })
                 @Html.ActionLink("Chi tiết", "Details", "BanController", new { id = item.id }, new { @class = "order-button" })
             </div>
         </div>
@@ -32,8 +32,8 @@
     }
 
     .table {
-        height: 400px;
-        width: 350px;
+        height: 350px;
+        width: 250px;
         position: relative;
         margin-right: 10px;
         margin-bottom: 10px;
@@ -41,8 +41,8 @@
 
     .ban-image {
         position: absolute;
-        height: 400px;
-        width: 350px;
+        height: 350px;
+        width: 250px;
         object-fit: cover;
     }
 
@@ -51,7 +51,7 @@
         background-color: black;
         position: absolute;
         padding: 20px;
-        top: 57%;
+        top: 55%;
     }
 
     p, h4, a {
@@ -73,5 +73,9 @@
             color: #fbb710 !important;
             border: 1px solid #fbb710;
             font-size: 15px;
+        }
+
+        .dat-coc-toi-thieu-content {
+            font-size: 13px;
         }
 </style>

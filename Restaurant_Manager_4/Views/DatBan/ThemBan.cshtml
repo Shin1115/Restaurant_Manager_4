@@ -1,0 +1,192 @@
+﻿@using Restaurant_Manager_4.DTO;
+@using Restaurant_Manager_4.SerializableObjects.Enums;
+@using Restaurant_Manager_4.SerializableObjects;
+@using Restaurant_Manager_4.Models;
+@using Restaurant_Manager_4.Enums;
+@model Restaurant_Manager_4.Requests.DatBanRequest
+@{
+    ViewBag.Title = "ChonMonAn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string baseurl = Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Url.Content("~");
+    List<phan_muc_ban> danhSachPhanMuc = ViewBag.DanhSachPhanMuc;
+    DatMonAnSessionData datMonAnSessionData = ViewBag.DatMonAnSessionData;
+    Dictionary<int, Dictionary<PhanMucType, List<int>>> data = datMonAnSessionData.Data;
+    List<BanDTO> banDTOs = ViewBag.BanDTOs;
+    List<MonAnDTO> monAnDTOs = ViewBag.MonAnDTOs;
+}
+<div class="container">
+    <div class="row">
+        @foreach (KeyValuePair<int, Dictionary<PhanMucType, List<int>>> keyValuePair in data)
+        {
+        <div class="container phan-muc">
+            @{
+                int idPhanMucBan = keyValuePair.Key;
+                phan_muc_ban phanMuc = danhSachPhanMuc.Where(pm => pm.id == idPhanMucBan).First();
+                List<int> banDTOIds = keyValuePair.Value[PhanMucType.Ban];
+                List<int> monAnDTOIds = keyValuePair.Value[PhanMucType.MonAn];
+            }
+            <h3 class="ten-phan-muc">@phanMuc.ten_phan_muc</h3>
+
+            @Html.ActionLink("Thêm bàn", "Index", new { idPhanMuc = phanMuc.id }, null)
+            <a href="#">Thêm món ăn</a>
+
+            <div class="col-md-6">
+                <h4>Danh sách các bàn đã chọn là</h4>
+                @foreach (int banDTOId in banDTOIds)
+                {
+                    <div class="table-item">
+                        @{
+                            BanDTO banDTO = banDTOs.Where(bdto => bdto.id == banDTOId).First();
+                        }
+                        <h5 class="table-name">@banDTO.ten_ban</h5>
+                        <img class="table-image" src="@baseurl@banDTO.hinh_anh" />
+                    </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <h4>Danh sách các món ăn đã chọn là</h4>
+                @foreach (int monAnDTOId in monAnDTOIds)
+                {
+                    <div class="table-item">
+                        @{
+                            MonAnDTO monAnDTO = monAnDTOs.Where(madto => madto.id == monAnDTOId).First();
+                        }
+                        <h5 class="table-name">@monAnDTO.ten_mon_an</h5>
+                        <img class="table-image" src="@baseurl@monAnDTO.hinh_anh" />
+                    </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+    
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Các thông tin liên quan</h1>
+            @using (Html.BeginForm("Create", "DatBan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ngay_dat, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ngay_dat, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ngay_dat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ngay_den, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ngay_den, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ngay_den, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.so_luong_nguoi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.so_luong_nguoi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.so_luong_nguoi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tien_coc_truoc, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.tien_coc_truoc, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.tien_coc_truoc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn amado-btn mb-15" value="Hoàn tất đặt bàn">
+                            <a class="btn amado-btn mb-15" href="/">Thoát</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .ten-phan-muc {
+        font-weight: bold;
+        font-size: xx-large;
+    }
+
+    .phan-muc {
+        margin-bottom: 10px;
+    }
+    .table-item {
+        position: relative;
+    }
+
+    .table-name {
+        display: inline-block;
+        background-color: #fbb710;
+        height: 5rem;
+        padding: 10px;
+        color: white;
+        position: absolute;
+    }
+
+    .table-image {
+        height: 5rem;
+        width: 100%;
+        object-fit: cover;
+        transition: all 0.3s;
+    }
+
+    .util-btn-container {
+        margin-top: 10px;
+        display: flex;
+        height: 0px;
+        transition: all 0.3s;
+    }
+
+        .util-btn-container a {
+            padding: 0px;
+            height: 0rem;
+        }
+
+    .table-btn {
+        flex-grow: 1;
+        color: white !important;
+        text-align: center;
+        transition: all .3s;
+    }
+
+        .table-btn:hover {
+            background-color: #fbb710;
+        }
+
+    .main-btn {
+        background-color: black;
+    }
+
+    .side-btn {
+        background-color: black;
+    }
+
+    .table-item:hover > .table-image {
+        height: 20rem;
+    }
+
+    .table-item:hover > .util-btn-container {
+        height: 5rem;
+    }
+
+        .table-item:hover > .util-btn-container > a {
+            padding: 10px;
+            height: 80%;
+            color: white;
+        }
+</style>
+
+<script>
+
+</script>

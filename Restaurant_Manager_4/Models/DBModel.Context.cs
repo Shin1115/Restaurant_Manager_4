@@ -37,9 +37,8 @@ namespace Restaurant_Manager_4.Models
         public virtual DbSet<hoa_don> hoa_don { get; set; }
         public virtual DbSet<khuyen_mai> khuyen_mai { get; set; }
         public virtual DbSet<mon_an> mon_an { get; set; }
+        public virtual DbSet<phan_muc_ban> phan_muc_ban { get; set; }
         public virtual DbSet<tin_tuc> tin_tuc { get; set; }
         public virtual DbSet<user> users { get; set; }
-
-        public System.Data.Entity.DbSet<Restaurant_Manager_4.DTO.BanDTO> BanDTOes { get; set; }
     }
 }

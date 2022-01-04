@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Restaurant_Manager_4.DTO;
+using Restaurant_Manager_4.Enums;
+using Restaurant_Manager_4.Helpers;
 using Restaurant_Manager_4.Models;
 using Restaurant_Manager_4.Requests;
 using Restaurant_Manager_4.SerializableObjects;
+using Restaurant_Manager_4.SerializableObjects.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,94 +15,94 @@ namespace Restaurant_Manager_4.Controllers
 {
     public class DatBanController : Controller
     {
+        private static string DAT_MON_AN_SESSION_KEY = "DatMonAnSession";
+        private Mapper _mapperBan;
+        private Mapper _mapperMonAn;
         public DatBanController()
         {
+            _mapperBan = new Mapper(ModelMappers.ModelMappers.BAN_TO_BANDTO);
+            _mapperMonAn = new Mapper(ModelMappers.ModelMappers.MONAN_TO_MONANDTO);
         }
 
         // GET: DatBan
-        public ActionResult Index()
+        public ActionResult Index(string idPhanMuc = "1")
         {
+            CreateDatMonAnSessionData();
             using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
-            {
-                Mapper mapper = new Mapper(ModelMappers.ModelMappers.BAN_TO_BANDTO);
+            {   
                 //CustomPrincipal customPrincipal = (CustomPrincipal)HttpContext.User;
                 List<ban> bans = context.bans.Where(ban => ban.trang_thai == 0).ToList();
-                List<BanDTO> banDTOs = bans.Select(ban => mapper.Map<BanDTO>(ban)).ToList<BanDTO>();
+                List<BanDTO> banDTOs = bans.Select(ban => _mapperBan.Map<BanDTO>(ban)).ToList<BanDTO>();
                 return View(banDTOs);
             }
         }
 
-        public ActionResult ChonMonAn(string idBan)
+        public ActionResult DanhSachMonAn(string idPhanMuc = "1")
         {
-            DatMonAnSessionData datMonAnSessionData = Session["DatMonAnSession"] as DatMonAnSessionData;
-
-
-            if (idBan != null)
-            {
-                if (datMonAnSessionData == null)
-                {
-                    datMonAnSessionData = new DatMonAnSessionData();
-                    Session["DatMonAnSession"] = datMonAnSessionData;
-                }
-                datMonAnSessionData = Session["DatMonAnSession"] as DatMonAnSessionData;
-                if (int.TryParse(idBan, out int nIdBan))
-                {
-                    if (!datMonAnSessionData.Bans.Contains(nIdBan))
-                    {
-                        datMonAnSessionData.Bans.Add(nIdBan);
-                        Session["DatMonAnSession"] = datMonAnSessionData;
-                    }
-                }
-            }
-
-            if (datMonAnSessionData == null)
-            {
-                ViewBag.banDTOs = new List<BanDTO>();
-                ViewBag.monAnDTOs = new List<MonAnDTO>();
-                return View();
-            }
-
-            datMonAnSessionData = this.Session["DatMonAnSession"] as DatMonAnSessionData;
-            List<int> nIdBans = datMonAnSessionData.Bans;
-            List<int> nIdMonAns = datMonAnSessionData.MonAns;
-
-
             using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
             {
-                Mapper mapperBanToBanDTO = new Mapper(ModelMappers.ModelMappers.BAN_TO_BANDTO);
-
-                List<BanDTO> banDTOs = new List<BanDTO>();
-                foreach (int banId in nIdBans)
-                {
-                    ban ban = context.bans.Where(b => b.id == banId).FirstOrDefault();
-                    BanDTO banDTO = mapperBanToBanDTO.Map<BanDTO>(ban);
-                    banDTOs.Add(banDTO);
-                }
-
-                List<MonAnDTO> monAnDTOs = new List<MonAnDTO>();
-                foreach (int monAnId in nIdMonAns)
-                {
-                    mon_an monAn = context.mon_an.Where(ma => ma.id == monAnId).FirstOrDefault();
-                    MonAnDTO monAnDTO = mapperBanToBanDTO.Map<MonAnDTO>(monAn);
-                    monAnDTOs.Add(monAnDTO);
-                }
-
-                ViewBag.banDTOs = banDTOs;
-                ViewBag.monAnDTOs = monAnDTOs;
-                int tien_coc_truoc = 0;
-                foreach (ban ban in context.bans.Where(ban => nIdBans.Contains(ban.id)).ToList())
-                {
-                    tien_coc_truoc += (int)ban.dat_coc_toi_thieu;
-                }
-
-                DatBanRequest datBanRequest = new DatBanRequest
-                {
-                    ngay_dat = DateTime.Now,
-                    so_luong_nguoi = 0,
-                    tien_coc_truoc = tien_coc_truoc
-                };
-                return View(datBanRequest);
+                List<mon_an> monAns = context.mon_an
+                    .Where(monAn => monAn.trang_thai == (int)ETrangThaiMonAn.ConHang)
+                    .ToList();
+                List<MonAnDTO> monAnDTOs = monAns
+                    .Select(monAn => _mapperMonAn.Map<MonAnDTO>(monAn))
+                    .ToList();
+                return View(monAnDTOs);
             }
+        }
+
+        public ActionResult ThemMonAn(string idMonAn, string idPhanMuc = "1")
+        {
+            CreateDatMonAnSessionData();
+            DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
+            int nIdPhanMuc = int.Parse(idPhanMuc);
+            if (idMonAn != null)
+            {
+                int nIdMonAn = int.Parse(idMonAn);
+                if (!IsExistInSessionDataMonAn(nIdMonAn))
+                {
+                    datMonAnSessionData.Data[nIdPhanMuc][PhanMucType.Ban].Add(nIdMonAn);
+                }
+            }
+            return Redirect("ThemBan");
+        }
+
+        public ActionResult ThemBan(string idBan, string idPhanMuc = "1")
+        {
+            CreateDatMonAnSessionData();
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                List<phan_muc_ban> phan_Muc_Bans = context.phan_muc_ban.ToList();
+                ViewBag.DanhSachPhanMuc = phan_Muc_Bans;
+            }
+            DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
+            int nIdPhanMuc = int.Parse(idPhanMuc);
+            if (idBan != null)
+            {
+                int nIdBan = int.Parse(idBan);
+                if (!IsExistInSessionDataBan(nIdBan))
+                {
+                    datMonAnSessionData.Data[nIdPhanMuc][PhanMucType.Ban].Add(nIdBan);
+                }
+            }
+            Session[DAT_MON_AN_SESSION_KEY] = datMonAnSessionData;
+
+            ViewBag.BanDTOs = GetBanDTOs(datMonAnSessionData);
+            ViewBag.DatMonAnSessionData = datMonAnSessionData;
+
+            DatBanRequest datBanRequest = new DatBanRequest();
+            datBanRequest.banDTOs = GetBanDTOs(datMonAnSessionData);
+            datBanRequest.monAnDTOs = new List<MonAnDTO>();
+            datBanRequest.tien_coc_truoc = 0;
+            datBanRequest.so_luong_nguoi = 0;
+            datBanRequest.ngay_dat = DateTime.Now;
+            datBanRequest.ngay_den = datBanRequest.ngay_dat.AddDays(3);
+            return View(datBanRequest);
+        }
+
+        public ActionResult XoaBan(string idBan)
+        {
+            return View();
         }
 
         // GET: DatBan/Details/5
@@ -172,6 +175,86 @@ namespace Restaurant_Manager_4.Controllers
             {
                 return View();
             }
+        }
+
+        private List<BanDTO> GetBanDTOs(DatMonAnSessionData datMonAnSessionData)
+        {
+            List<BanDTO> banDTOs = new List<BanDTO>();
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                Dictionary<int, Dictionary<PhanMucType,List<int>>> data = datMonAnSessionData.Data;
+                foreach (KeyValuePair<int, Dictionary<PhanMucType, List<int>>> keyValuePair in data)
+                {
+                    Dictionary<PhanMucType, List<int>> danhSachBanMonAnId = keyValuePair.Value;
+                    List<int> idBans = danhSachBanMonAnId[PhanMucType.Ban];
+                    foreach (int idBan in idBans)
+                    {
+                        ban ban = context.bans.Where(b => b.id == idBan).FirstOrDefault();
+                        BanDTO banDTO = _mapperBan.Map<BanDTO>(ban);
+                        banDTOs.Add(banDTO);
+                    }
+                }
+                return banDTOs;
+            }
+        }
+
+        private void CreateDatMonAnSessionData()
+        {
+            if (!(Session[DAT_MON_AN_SESSION_KEY] is DatMonAnSessionData datMonAnSessionData))
+            {
+                ViewBag.BanDTOs = new List<BanDTO>();
+                ViewBag.MonAnDTOs = new List<MonAnDTO>();
+                Dictionary<int, Dictionary<PhanMucType, List<int>>> data = new Dictionary<int, Dictionary<PhanMucType, List<int>>>();
+                using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+                {
+                    foreach (phan_muc_ban phanMucBan in context.phan_muc_ban.ToList())
+                    {
+                        Dictionary<PhanMucType, List<int>> phanMucDic = new Dictionary<PhanMucType, List<int>>();
+                        phanMucDic[PhanMucType.Ban] = new List<int>();
+                        phanMucDic[PhanMucType.MonAn] = new List<int>();
+                        data[phanMucBan.id] = phanMucDic;
+                    }
+                }
+
+                Session[DAT_MON_AN_SESSION_KEY] = new DatMonAnSessionData()
+                {
+                    Data = data
+                };
+            }
+        }
+
+        private bool IsExistInSessionDataBan(int idBan)
+        {
+            DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
+            if (datMonAnSessionData!=null)
+            {
+                foreach (Dictionary<PhanMucType, List<int>> value in datMonAnSessionData.Data.Values)
+                {
+                    if (value[PhanMucType.Ban].Contains(idBan))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
+        }
+
+        private bool IsExistInSessionDataMonAn(int idMonAn)
+        {
+            DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
+            if (datMonAnSessionData != null)
+            {
+                foreach (Dictionary<PhanMucType, List<int>> value in datMonAnSessionData.Data.Values)
+                {
+                    if (value[PhanMucType.MonAn].Contains(idMonAn))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

@@ -41,7 +41,7 @@
             @Html.DisplayFor(modelItem => item.dat_coc_toi_thieu)
         </td>
         <td>
-            <img src="@item.hinh_anh"/>
+            <img class="table-image" src="http://localhost:51747/@item.hinh_anh"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.mo_ta)
@@ -55,3 +55,11 @@
 }
 
 </table>
+
+<style>
+    .table-image {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+</style>

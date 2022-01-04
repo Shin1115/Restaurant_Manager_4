@@ -8,6 +8,7 @@ namespace Restaurant_Manager_4.DTO
 {
     public class MonAnDTO
     {
+        public int id { get; set; }
         public string ten_mon_an { get; set; }
         public int gia { get; set; }
         public DateTime ngay_them { get; set; }
