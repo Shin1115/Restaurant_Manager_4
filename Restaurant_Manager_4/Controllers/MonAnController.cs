@@ -27,7 +27,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: MonAn/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             mon_an monan = db.mon_an.Find(id);
             return View(monan);
@@ -64,7 +64,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: MonAn/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             mon_an monan = db.mon_an.FirstOrDefault(x => x.id == id);
             return View(monan);
@@ -98,7 +98,7 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: MonAn/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
