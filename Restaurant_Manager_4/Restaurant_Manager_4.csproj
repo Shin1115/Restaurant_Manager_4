@@ -136,11 +136,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\DanhMucMonAnController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonAnController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\LoginView.cs" />
     <Compile Include="Controllers\TinTucController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Models\ban.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\chi_tiet_danh_muc.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -2711,6 +2713,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\assets-order\assets\favicon.ico" />
+    <Content Include="Content\assets-order\css\styles.css" />
+    <Content Include="Content\assets-order\js\scripts.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -2987,12 +2992,15 @@
     <Content Include="Views\DanhMucMonAn\Index.cshtml" />
     <Content Include="Views\BaoCao\Create.cshtml" />
     <Content Include="Views\Admin\AdminHome.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\MonAn\Create.cshtml" />
     <Content Include="Views\MonAn\Delete.cshtml" />
     <Content Include="Views\MonAn\Index.cshtml" />
     <Content Include="Views\MonAn\Edit.cshtml" />
     <Content Include="Views\MonAn\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
