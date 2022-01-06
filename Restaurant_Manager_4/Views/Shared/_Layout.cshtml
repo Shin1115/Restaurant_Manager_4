@@ -14,8 +14,7 @@
     <title>Amado - Furniture Ecommerce Template | Home</title>
     <!-- Favicon  -->
     <link rel="icon" href="/Content/asset/img/core-img/favicon.ico">
-    <!-- Core Style CSS -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     @Styles.Render("~/Content/asset/css/core-style.css")
     @Styles.Render("~/Content/asset/style.css")
     @Styles.Render("~/Content/css")
@@ -82,11 +81,21 @@
                     {
                         <li><a href="~/Home/Index">Trang chủ</a></li>
                     }
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="~/Home/Product_Detail">Product</a></li>
-                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Cart")
+
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Order")
                     {
-                        <li class="active">@Html.ActionLink("Cart", "Index", "Cart")</li>
+                        <li class="active">@Html.ActionLink("Shop", "Index", "Order")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Shop", "Index", "Order")</li>
+                    }
+
+                    <li><a href="~/Home/Product_Detail">Product</a></li>
+
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "ShoppingCart")
+                    {
+                        <li class="active">@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
                     }
                     else
                     {

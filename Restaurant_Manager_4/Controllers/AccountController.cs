@@ -16,7 +16,6 @@ namespace Restaurant_Manager_4.Controllers
         {
             return View();
         }
-
         [HttpGet]
         public ActionResult Login(string ReturnUrl = "")
         {
