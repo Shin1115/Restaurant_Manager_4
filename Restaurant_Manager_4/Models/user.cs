@@ -21,9 +21,8 @@ namespace Restaurant_Manager_4.Models
             this.danh_gia_khach_hang = new HashSet<danh_gia_khach_hang>();
             this.dat_ban = new HashSet<dat_ban>();
             this.dat_ban1 = new HashSet<dat_ban>();
-            this.dat_hang = new HashSet<dat_hang>();
-            this.dat_hang1 = new HashSet<dat_hang>();
             this.hoa_don = new HashSet<hoa_don>();
+            this.khuyen_mai = new HashSet<khuyen_mai>();
             this.tin_tuc = new HashSet<tin_tuc>();
         }
     
@@ -47,11 +46,9 @@ namespace Restaurant_Manager_4.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<dat_ban> dat_ban1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dat_hang> dat_hang { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<dat_hang> dat_hang1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hoa_don> hoa_don { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<khuyen_mai> khuyen_mai { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tin_tuc> tin_tuc { get; set; }
     }

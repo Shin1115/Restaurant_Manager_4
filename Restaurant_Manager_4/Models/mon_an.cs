@@ -18,7 +18,6 @@ namespace Restaurant_Manager_4.Models
         public mon_an()
         {
             this.chi_tiet_danh_muc = new HashSet<chi_tiet_danh_muc>();
-            this.chi_tiet_dat_hang = new HashSet<chi_tiet_dat_hang>();
             this.chi_tiet_hoa_don = new HashSet<chi_tiet_hoa_don>();
             this.chi_tiet_khuyen_mai = new HashSet<chi_tiet_khuyen_mai>();
             this.danh_gia_khach_hang = new HashSet<danh_gia_khach_hang>();
@@ -35,8 +34,6 @@ namespace Restaurant_Manager_4.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chi_tiet_danh_muc> chi_tiet_danh_muc { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chi_tiet_dat_hang> chi_tiet_dat_hang { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chi_tiet_hoa_don> chi_tiet_hoa_don { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

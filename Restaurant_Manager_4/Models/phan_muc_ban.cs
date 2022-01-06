@@ -12,24 +12,18 @@ namespace Restaurant_Manager_4.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class dat_hang
+    public partial class phan_muc_ban
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public dat_hang()
+        public phan_muc_ban()
         {
-            this.chi_tiet_dat_hang = new HashSet<chi_tiet_dat_hang>();
+            this.chi_tiet_dat_ban = new HashSet<chi_tiet_dat_ban>();
         }
     
         public int id { get; set; }
-        public Nullable<int> id_nguoi_dat { get; set; }
-        public Nullable<int> id_nhan_vien { get; set; }
-        public Nullable<System.DateTime> ngay_dat { get; set; }
-        public Nullable<int> tien_coc_truoc { get; set; }
-        public Nullable<int> trang_thai { get; set; }
+        public string ten_phan_muc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chi_tiet_dat_hang> chi_tiet_dat_hang { get; set; }
-        public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
+        public virtual ICollection<chi_tiet_dat_ban> chi_tiet_dat_ban { get; set; }
     }
 }

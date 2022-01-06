@@ -4,45 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8493741025fe48119b55484250b06a1c" Name="Diagram1">
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.ban" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_danh_muc" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_dat_ban" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_dat_hang" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_hoa_don" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_khuyen_mai" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.danh_gia_khach_hang" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+      <Diagram DiagramId="34a72b68747c4012b367968f8f92048b" Name="Diagram1">
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.ban" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_danh_muc" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_dat_ban" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_hoa_don" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.chi_tiet_khuyen_mai" Width="1.5" PointX="5.25" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.danh_gia_khach_hang" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="quan_ly_nha_hangModel.danh_muc_mon_an" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.dat_ban" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.dat_ban_mon_an" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.dat_hang" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.hoa_don" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.khuyen_mai" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.mon_an" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.tin_tuc" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="quan_ly_nha_hangModel.user" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_ba__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_da__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_da__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_da__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_ho__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_nh__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_kh__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__danh_gia___id_mo__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__danh_gia___id_ng__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban__id_nguo__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban__id_nhan__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban_m__id_da__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban_m__id_mo__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_hang__id_ngu__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_hang__id_nha__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__hoa_don__id_nguo__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="quan_ly_nha_hangModel.FK__tin_tuc__id_nguo__46E78A0C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.dat_ban" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.dat_ban_mon_an" Width="1.5" PointX="8.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.hoa_don" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.khuyen_mai" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.mon_an" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.phan_muc_ban" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.tin_tuc" Width="1.5" PointX="3" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="quan_ly_nha_hangModel.user" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_ba__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_da__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_da__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_ph__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_ho__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_nh__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_kh__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__chi_tiet___id_mo__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__danh_gia___id_mo__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__danh_gia___id_ng__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban__id_nguo__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban__id_nhan__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban_m__id_da__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__dat_ban_m__id_mo__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__hoa_don__id_nguo__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__khuyen_ma__id_ng__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="quan_ly_nha_hangModel.FK__tin_tuc__id_nguo__5629CD9C" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

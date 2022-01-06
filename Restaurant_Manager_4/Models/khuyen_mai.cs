@@ -24,9 +24,10 @@ namespace Restaurant_Manager_4.Models
         public string ten_dot_khuyen_mai { get; set; }
         public Nullable<System.DateTime> bat_dau { get; set; }
         public Nullable<System.DateTime> ket_thuc { get; set; }
-        public Nullable<int> phan_tram_giam { get; set; }
+        public Nullable<int> id_nguoi_tao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chi_tiet_khuyen_mai> chi_tiet_khuyen_mai { get; set; }
+        public virtual user user { get; set; }
     }
 }

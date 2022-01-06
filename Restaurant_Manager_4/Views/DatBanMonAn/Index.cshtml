@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Restaurant_Manager_4.DTO.MonAnDTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ten_mon_an)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngay_them)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngay_sua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hinh_anh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten_mon_an)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngay_them)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngay_sua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hinh_anh)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -23,6 +23,7 @@ namespace Restaurant_Manager_4.Models
         public int id { get; set; }
         public Nullable<int> id_nguoi_dung { get; set; }
         public Nullable<System.DateTime> ngay_tao { get; set; }
+        public Nullable<int> tien_coc { get; set; }
         public Nullable<int> trang_thai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

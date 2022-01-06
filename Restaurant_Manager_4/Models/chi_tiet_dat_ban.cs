@@ -17,8 +17,10 @@ namespace Restaurant_Manager_4.Models
         public int id { get; set; }
         public Nullable<int> id_dat_ban { get; set; }
         public Nullable<int> id_ban { get; set; }
+        public Nullable<int> id_phan_muc { get; set; }
     
         public virtual ban ban { get; set; }
         public virtual dat_ban dat_ban { get; set; }
+        public virtual phan_muc_ban phan_muc_ban { get; set; }
     }
 }
