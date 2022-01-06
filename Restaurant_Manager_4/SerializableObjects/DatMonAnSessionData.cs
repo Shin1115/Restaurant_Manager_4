@@ -10,6 +10,6 @@ namespace Restaurant_Manager_4.SerializableObjects
     [Serializable]
     public class DatMonAnSessionData
     {
-        public Dictionary<int, Dictionary<PhanMucType, List<int>>> Data { get; set; }
+        public Dictionary<int, Dictionary<string, List<int>>> Data { get; set; }
     }
 }

@@ -28,9 +28,9 @@ else
         if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
         {
             <div>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Chỉnh sửa tin", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.id }) |
+                @Html.ActionLink("Xoá tin tức", "Delete", new { id = item.id })
             </div>
         }
     }

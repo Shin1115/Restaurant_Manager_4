@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace Restaurant_Manager_4.Controllers
 {
@@ -45,23 +46,32 @@ namespace Restaurant_Manager_4.Controllers
                     .Where(monAn => monAn.trang_thai == (int)ETrangThaiMonAn.ConHang)
                     .ToList();
                 List<MonAnDTO> monAnDTOs = monAns
-                    .Select(monAn => _mapperMonAn.Map<MonAnDTO>(monAn))
+                    .Select(monAn => {
+                        MonAnDTO monAnDTO = new MonAnDTO()
+                        {
+                            id = monAn.id,
+                            ten_mon_an = monAn.ten_mon_an,
+                            hinh_anh = monAn.hinh_anh,
+                            gia = monAn.gia.Value
+                        };
+                        return monAnDTO;
+                    })
                     .ToList();
                 return View(monAnDTOs);
             }
         }
 
-        public ActionResult ThemMonAn(string idMonAn, string idPhanMuc = "1")
+        public ActionResult ThemMonAn(string IdMonAn, string IdPhanMuc = "1")
         {
             CreateDatMonAnSessionData();
             DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
-            int nIdPhanMuc = int.Parse(idPhanMuc);
-            if (idMonAn != null)
+            int nIdPhanMuc = int.Parse(IdPhanMuc);
+            if (IdMonAn != null)
             {
-                int nIdMonAn = int.Parse(idMonAn);
+                int nIdMonAn = int.Parse(IdMonAn);
                 if (!IsExistInSessionDataMonAn(nIdMonAn))
                 {
-                    datMonAnSessionData.Data[nIdPhanMuc][PhanMucType.Ban].Add(nIdMonAn);
+                    datMonAnSessionData.Data[nIdPhanMuc][PhanMucType.MonAn].Add(nIdMonAn);
                 }
             }
             return Redirect("ThemBan");
@@ -88,16 +98,10 @@ namespace Restaurant_Manager_4.Controllers
             Session[DAT_MON_AN_SESSION_KEY] = datMonAnSessionData;
 
             ViewBag.BanDTOs = GetBanDTOs(datMonAnSessionData);
+            ViewBag.MonAnDTOs = GetMonAnDTOs(datMonAnSessionData);
             ViewBag.DatMonAnSessionData = datMonAnSessionData;
-
-            DatBanRequest datBanRequest = new DatBanRequest();
-            datBanRequest.banDTOs = GetBanDTOs(datMonAnSessionData);
-            datBanRequest.monAnDTOs = new List<MonAnDTO>();
-            datBanRequest.tien_coc_truoc = 0;
-            datBanRequest.so_luong_nguoi = 0;
-            datBanRequest.ngay_dat = DateTime.Now;
-            datBanRequest.ngay_den = datBanRequest.ngay_dat.AddDays(3);
-            return View(datBanRequest);
+            ViewBag.JSONDatBanMonAn = JsonConvert.SerializeObject(datMonAnSessionData.Data);
+            return View();
         }
 
         public ActionResult XoaBan(string idBan)
@@ -177,15 +181,42 @@ namespace Restaurant_Manager_4.Controllers
             }
         }
 
+        private List<MonAnDTO> GetMonAnDTOs(DatMonAnSessionData datMonAnSessionData)
+        {
+            List<MonAnDTO> monAnDTOs = new List<MonAnDTO>();
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                Dictionary<int, Dictionary<string,List<int>>> data = datMonAnSessionData.Data;
+                foreach (KeyValuePair<int, Dictionary<string, List<int>>> keyValuePair in data)
+                {
+                    Dictionary<string, List<int>> danhSachBanMonAnId = keyValuePair.Value;
+                    List<int> idMonAns = danhSachBanMonAnId[PhanMucType.MonAn];
+                    foreach (int idMonAn in idMonAns)
+                    {
+                        mon_an monAn = context.mon_an.Where(ma => ma.id == idMonAn).FirstOrDefault();
+                        MonAnDTO monAnDTO = new MonAnDTO()
+                        {
+                            id = monAn.id,
+                            ten_mon_an = monAn.ten_mon_an,
+                            hinh_anh = monAn.hinh_anh,
+                            gia = monAn.gia.Value
+                        };
+                        monAnDTOs.Add(monAnDTO);
+                    }
+                }
+                return monAnDTOs;
+            }
+        }
+
         private List<BanDTO> GetBanDTOs(DatMonAnSessionData datMonAnSessionData)
         {
             List<BanDTO> banDTOs = new List<BanDTO>();
             using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
             {
-                Dictionary<int, Dictionary<PhanMucType,List<int>>> data = datMonAnSessionData.Data;
-                foreach (KeyValuePair<int, Dictionary<PhanMucType, List<int>>> keyValuePair in data)
+                Dictionary<int, Dictionary<string, List<int>>> data = datMonAnSessionData.Data;
+                foreach (KeyValuePair<int, Dictionary<string, List<int>>> keyValuePair in data)
                 {
-                    Dictionary<PhanMucType, List<int>> danhSachBanMonAnId = keyValuePair.Value;
+                    Dictionary<string, List<int>> danhSachBanMonAnId = keyValuePair.Value;
                     List<int> idBans = danhSachBanMonAnId[PhanMucType.Ban];
                     foreach (int idBan in idBans)
                     {
@@ -204,12 +235,12 @@ namespace Restaurant_Manager_4.Controllers
             {
                 ViewBag.BanDTOs = new List<BanDTO>();
                 ViewBag.MonAnDTOs = new List<MonAnDTO>();
-                Dictionary<int, Dictionary<PhanMucType, List<int>>> data = new Dictionary<int, Dictionary<PhanMucType, List<int>>>();
+                Dictionary<int, Dictionary<string, List<int>>> data = new Dictionary<int, Dictionary<string, List<int>>>();
                 using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
                 {
                     foreach (phan_muc_ban phanMucBan in context.phan_muc_ban.ToList())
                     {
-                        Dictionary<PhanMucType, List<int>> phanMucDic = new Dictionary<PhanMucType, List<int>>();
+                        Dictionary<string, List<int>> phanMucDic = new Dictionary<string, List<int>>();
                         phanMucDic[PhanMucType.Ban] = new List<int>();
                         phanMucDic[PhanMucType.MonAn] = new List<int>();
                         data[phanMucBan.id] = phanMucDic;
@@ -228,7 +259,7 @@ namespace Restaurant_Manager_4.Controllers
             DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
             if (datMonAnSessionData!=null)
             {
-                foreach (Dictionary<PhanMucType, List<int>> value in datMonAnSessionData.Data.Values)
+                foreach (Dictionary<string, List<int>> value in datMonAnSessionData.Data.Values)
                 {
                     if (value[PhanMucType.Ban].Contains(idBan))
                     {
@@ -245,7 +276,7 @@ namespace Restaurant_Manager_4.Controllers
             DatMonAnSessionData datMonAnSessionData = Session[DAT_MON_AN_SESSION_KEY] as DatMonAnSessionData;
             if (datMonAnSessionData != null)
             {
-                foreach (Dictionary<PhanMucType, List<int>> value in datMonAnSessionData.Data.Values)
+                foreach (Dictionary<string, List<int>> value in datMonAnSessionData.Data.Values)
                 {
                     if (value[PhanMucType.MonAn].Contains(idMonAn))
                     {

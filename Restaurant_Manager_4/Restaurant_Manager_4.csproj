@@ -150,6 +150,7 @@
     <Compile Include="DTO\BanDTO.cs" />
     <Compile Include="DTO\DatBanDTO.cs" />
     <Compile Include="DTO\MonAnDTO.cs" />
+    <Compile Include="DTO\TinTucDTO.cs" />
     <Compile Include="Enums\ENgayDen.cs" />
     <Compile Include="Enums\ETrangThaiBan.cs" />
     <Compile Include="Enums\ETrangThaiMonAn.cs" />
@@ -233,6 +234,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\BanRequest.cs" />
+    <Compile Include="Requests\PhanMucRequest.cs" />
     <Compile Include="Requests\DatBanRequest.cs" />
     <Compile Include="SerializableObjects\DatMonAnSessionData.cs" />
     <Compile Include="SerializableObjects\Enums\PhanMucType.cs" />
@@ -2301,6 +2303,8 @@
     <Content Include="Views\DatBan\ThemBan.cshtml" />
     <Content Include="Views\DatBanMonAn\Index.cshtml" />
     <Content Include="Views\DatBan\DanhSachMonAn.cshtml" />
+    <Content Include="Views\TinTuc\Delete.cshtml" />
+    <Content Include="Views\TinTuc\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

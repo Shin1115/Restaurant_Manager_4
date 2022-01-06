@@ -1,0 +1,61 @@
+﻿@model Restaurant_Manager_4.DTO.TinTucDTO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xoá tin tức</h2>
+
+<h3>Bạn có chắc muốn xoá tin tức này?</h3>
+<div>
+    <h4>Tin tức</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNguoiViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayViet)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+        {
+            <input type="submit" value="Xoá" class="btn btn-default" />
+            <span> | </span>
+        }
+        
+        @Html.ActionLink("Quay lại danh sách tin tức", "Index")
+    </div>
+    }
+</div>

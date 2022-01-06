@@ -12,104 +12,89 @@
     string baseurl = Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Url.Content("~");
     List<phan_muc_ban> danhSachPhanMuc = ViewBag.DanhSachPhanMuc;
     DatMonAnSessionData datMonAnSessionData = ViewBag.DatMonAnSessionData;
-    Dictionary<int, Dictionary<PhanMucType, List<int>>> data = datMonAnSessionData.Data;
+    Dictionary<int, Dictionary<string, List<int>>> data = datMonAnSessionData.Data;
     List<BanDTO> banDTOs = ViewBag.BanDTOs;
     List<MonAnDTO> monAnDTOs = ViewBag.MonAnDTOs;
 }
 <div class="container">
     <div class="row">
-        @foreach (KeyValuePair<int, Dictionary<PhanMucType, List<int>>> keyValuePair in data)
+        @foreach (KeyValuePair<int, Dictionary<string, List<int>>> keyValuePair in data)
         {
-        <div class="container phan-muc">
-            @{
-                int idPhanMucBan = keyValuePair.Key;
-                phan_muc_ban phanMuc = danhSachPhanMuc.Where(pm => pm.id == idPhanMucBan).First();
-                List<int> banDTOIds = keyValuePair.Value[PhanMucType.Ban];
-                List<int> monAnDTOIds = keyValuePair.Value[PhanMucType.MonAn];
-            }
-            <h3 class="ten-phan-muc">@phanMuc.ten_phan_muc</h3>
-
-            @Html.ActionLink("Thêm bàn", "Index", new { idPhanMuc = phanMuc.id }, null)
-            <a href="#">Thêm món ăn</a>
-
-            <div class="col-md-6">
-                <h4>Danh sách các bàn đã chọn là</h4>
-                @foreach (int banDTOId in banDTOIds)
-                {
-                    <div class="table-item">
-                        @{
-                            BanDTO banDTO = banDTOs.Where(bdto => bdto.id == banDTOId).First();
-                        }
-                        <h5 class="table-name">@banDTO.ten_ban</h5>
-                        <img class="table-image" src="@baseurl@banDTO.hinh_anh" />
-                    </div>
+            <div class="container phan-muc">
+                @{
+                    int idPhanMucBan = keyValuePair.Key;
+                    phan_muc_ban phanMuc = danhSachPhanMuc.Where(pm => pm.id == idPhanMucBan).First();
+                    List<int> banDTOIds = keyValuePair.Value[PhanMucType.Ban];
+                    List<int> monAnDTOIds = keyValuePair.Value[PhanMucType.MonAn];
                 }
-            </div>
-            <div class="col-md-6">
-                <h4>Danh sách các món ăn đã chọn là</h4>
-                @foreach (int monAnDTOId in monAnDTOIds)
-                {
-                    <div class="table-item">
-                        @{
-                            MonAnDTO monAnDTO = monAnDTOs.Where(madto => madto.id == monAnDTOId).First();
-                        }
-                        <h5 class="table-name">@monAnDTO.ten_mon_an</h5>
-                        <img class="table-image" src="@baseurl@monAnDTO.hinh_anh" />
-                    </div>
-                }
-            </div>
-        </div>
-        }
-    </div>
-    
+                <h3 class="ten-phan-muc">@phanMuc.ten_phan_muc</h3>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <h1>Các thông tin liên quan</h1>
-            @using (Html.BeginForm("Create", "DatBan", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-horizontal">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ngay_dat, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ngay_dat, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ngay_dat, "", new { @class = "text-danger" })
-                        </div>
+                @Html.ActionLink("Thêm bàn", "Index", new { idPhanMuc = phanMuc.id }, null)
+                @Html.ActionLink("Thêm món ăn", "DanhSachMonAn", new { IdPhanMuc = phanMuc.id }, null)
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Danh sách các bàn đã chọn là</h4>
+                        @foreach (int banDTOId in banDTOIds)
+                        {
+                            <div class="table-item">
+                                @{
+                                    BanDTO banDTO = banDTOs.Where(bdto => bdto.id == banDTOId).First();
+                                }
+                                <h5 class="table-name">@banDTO.ten_ban</h5>
+                                <img class="table-image" src="@baseurl@banDTO.hinh_anh" />
+                            </div>
+                        }
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ngay_den, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ngay_den, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ngay_den, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.so_luong_nguoi, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.so_luong_nguoi, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.so_luong_nguoi, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.tien_coc_truoc, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tien_coc_truoc, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.tien_coc_truoc, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" class="btn amado-btn mb-15" value="Hoàn tất đặt bàn">
-                            <a class="btn amado-btn mb-15" href="/">Thoát</a>
-                        </div>
+                    <div class="col-md-6">
+                        <h4>Danh sách các món ăn đã chọn là</h4>
+                        @foreach (int monAnDTOId in monAnDTOIds)
+                        {
+                            <div class="table-item">
+                                @{
+                                    MonAnDTO monAnDTO = monAnDTOs.Where(madto => madto.id == monAnDTOId).First();
+                                }
+                                <h5 class="table-name mon-an" value>@monAnDTO.ten_mon_an</h5>
+                                <img class="table-image" src="@baseurl@monAnDTO.hinh_anh" />
+                            </div>
+                        }
                     </div>
                 </div>
-            }
-        </div>
+
+            </div>
+        }
     </div>
 
+
+    <div class="row">        
+        <form class="col-md-12">
+            <div class="form-horizontal">
+                <h1>Các thông tin liên quan</h1>
+                <div class="form-group">
+                    <label for="so-luong-nguoi" class="control-label col-md-2">Số lượng người</label>
+                    <div class="col-md-10">
+                        <input type="number" name="so-luong-nguoi" value="0" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="meeting-time" class="control-label col-md-2">Ngày đến</label>
+                    <div class="col-md-10">
+                        <input type="datetime-local" id="meeting-time"
+                               name="meeting-time" value="2018-06-12T19:30"
+                               min="2018-06-07T00:00" max="2018-06-14T00:00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tien-coc" class="control-label col-md-2">Tiền cọc</label>
+                    <div class="col-md-10">
+                        <input id="tien-coc" type="number" name="tien-coc" value="0" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button onclick="postDatBanRequest('@ViewBag.JSONDatBanMonAn')">Hoàn tất đặt bàn</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <style>
@@ -121,6 +106,7 @@
     .phan-muc {
         margin-bottom: 10px;
     }
+
     .table-item {
         position: relative;
     }
@@ -188,5 +174,9 @@
 </style>
 
 <script>
+    function postDatBanRequest(model) {
+        console.log(model);
+    }
 
+    
 </script>
