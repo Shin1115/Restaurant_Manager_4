@@ -8,17 +8,18 @@
 @{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string idPhanMuc = Request.QueryString["idPhanMuc"];
 }
 
 <div class="table-container">
     @foreach (var item in Model)
     {
         <div class="table">
-            <img class="ban-image" src="http://localhost:51747/@item.hinh_anh" alt="">
+            <img class="ban-image" src="@item.hinh_anh" alt="">
             <div class="content">
                 <p class="dat-coc-toi-thieu-content">Đặt cọc tối thiểu <span class="font-bold">@item.dat_coc_toi_thieu</span></p>
                 <h4>@item.ten_ban</h4>
-                @Html.ActionLink("Đặt bàn", "ThemBan", new { idBan = item.id }, new { @class = "order-button" })
+                @Html.ActionLink("Đặt bàn", "ThemBan", new { idBan = item.id, idPhanMuc = idPhanMuc }, new { @class = "order-button" })
                 @Html.ActionLink("Chi tiết", "Details", "BanController", new { id = item.id }, new { @class = "order-button" })
             </div>
         </div>

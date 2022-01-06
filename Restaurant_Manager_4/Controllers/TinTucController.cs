@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Restaurant_Manager_4.DTO;
 using Restaurant_Manager_4.Infrastructure;
 using Restaurant_Manager_4.Models;
 
@@ -27,9 +29,27 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         // GET: TinTuc/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                tin_tuc tin_tuc = context.tin_tuc
+                    .Where(tt => tt.id == id)
+                    .Include(tt => tt.user)
+                    .First();
+                TinTucDTO tinTucDTO = new TinTucDTO()
+                {
+                    NgayViet = tin_tuc.ngay_viet.Value,
+                    NoiDung = tin_tuc.noi_dung,
+                    TieuDe = tin_tuc.tieu_de,
+                    TenNguoiViet = tin_tuc.user.ten_nguoi_dung
+                };
+                return View(tinTucDTO);
+            }
         }
 
         // GET: TinTuc/Create
@@ -70,9 +90,19 @@ namespace Restaurant_Manager_4.Controllers
 
         // GET: TinTuc/Edit/5
         [CustomAuthorize(Roles = "Admin")]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            using(QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                tin_tuc tin_tuc = context.tin_tuc
+                    .Where(tt => tt.id == id)
+                    .First();
+                return View(tin_tuc);
+            }
         }
 
         // POST: TinTuc/Edit/5
@@ -82,9 +112,16 @@ namespace Restaurant_Manager_4.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+                {
+                    tin_tuc tin_tuc = context.tin_tuc
+                        .Where(tt => tt.id == id)
+                        .First();
+                    tin_tuc.tieu_de = collection["tieu_de"];
+                    tin_tuc.noi_dung = collection["noi_dung"];
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -94,9 +131,27 @@ namespace Restaurant_Manager_4.Controllers
 
         // GET: TinTuc/Delete/5
         [CustomAuthorize(Roles = "Admin")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                tin_tuc tin_tuc = context.tin_tuc
+                    .Where(tt => tt.id == id)
+                    .Include(tt => tt.user)
+                    .First();
+                TinTucDTO tinTucDTO = new TinTucDTO()
+                {
+                    NgayViet = tin_tuc.ngay_viet.Value,
+                    NoiDung = tin_tuc.noi_dung,
+                    TieuDe = tin_tuc.tieu_de,
+                    TenNguoiViet = tin_tuc.user.ten_nguoi_dung
+                };
+                return View(tinTucDTO);
+            }
         }
 
         // POST: TinTuc/Delete/5
@@ -106,8 +161,12 @@ namespace Restaurant_Manager_4.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+                {
+                    tin_tuc tin_tuc = context.tin_tuc.Where(tt => tt.id == id).First();
+                    context.tin_tuc.Remove(tin_tuc);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch

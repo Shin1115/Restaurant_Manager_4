@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using Restaurant_Manager_4.Models;
 
 namespace Restaurant_Manager_4.Controllers
 {
@@ -7,7 +10,11 @@ namespace Restaurant_Manager_4.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
+            {
+                List<mon_an> monAns = context.mon_an.ToList();
+                return View(monAns);
+            }
         }
 
         public ActionResult About()

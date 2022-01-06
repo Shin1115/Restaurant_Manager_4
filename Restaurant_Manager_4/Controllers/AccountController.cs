@@ -80,17 +80,8 @@ namespace Restaurant_Manager_4.Controllers
         [HttpPost]
         public ActionResult Registration(RegistrationView registrationView)
         {
-            bool statusRegistration = false;
-            string messageRegistration;
             if (ModelState.IsValid)
             {
-                string userName = Membership.GetUserNameByEmail(registrationView.Email);
-                if (!string.IsNullOrEmpty(userName))
-                {
-                    ModelState.AddModelError("Cảnh báo email", "Email này đã tồn tại");
-                    return View(registrationView);
-                }
-
                 using (QuanLyNhaHangDataContext context = new QuanLyNhaHangDataContext())
                 {
                     var user = new user()
@@ -101,24 +92,19 @@ namespace Restaurant_Manager_4.Controllers
                         dia_chi = registrationView.Address,
                         email = registrationView.Email,
                         so_dien_thoai = registrationView.PhoneNumber,
-                        vai_tro = 3, 
+                        vai_tro = (int)UserRole.Customer, 
                         trang_thai = 1,
                         hinh_anh = "/Images/DefaultAvatar.jpg"
                     };
                     context.users.Add(user);
                     context.SaveChanges();
                 }
-
-                messageRegistration = "Đăng ký thành công";
-                statusRegistration = true;
+                return RedirectToAction("Login");
             }
             else
             {
-                messageRegistration = "Có gì đó sai";
+                return View(registrationView);
             }
-            ViewBag.Message = messageRegistration;
-            ViewBag.Status = statusRegistration;
-            return View(registrationView);
         }
 
         public ActionResult LogOut()

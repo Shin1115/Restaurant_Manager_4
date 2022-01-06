@@ -3,56 +3,76 @@
 @{
     ViewBag.Title = "DanhSachMonAn";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string baseurl = Request.Url.Scheme + "://" + Request.Url.Host + ":" + Request.Url.Port + Url.Content("~");
+    string idPhanMuc = Request.QueryString["idPhanMuc"];
 }
 
-<h2>DanhSachMonAn</h2>
+<div class="table-container">
+    @foreach (var item in Model)
+    {
+        <div class="table">
+            <img class="ban-image" src="@baseurl@item.hinh_anh" alt="">
+            <div class="content">
+                <p class="dat-coc-toi-thieu-content">Giá: <span class="font-bold">@item.gia</span></p>
+                <h4>@item.ten_mon_an</h4>
+                @Html.ActionLink("Đặt món", "ThemMonAn", new { idMonAn = item.id, idPhanMuc = idPhanMuc }, new { @class = "order-button" })
+                <a class="order-button">Chi tiết</a>
+            </div>
+        </div>
+    }
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ten_mon_an)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngay_them)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngay_sua)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hinh_anh)
-        </th>
-        <th></th>
-    </tr>
+<style>
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ten_mon_an)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngay_them)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngay_sua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hinh_anh)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    .table {
+        height: 350px;
+        width: 250px;
+        position: relative;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
 
-</table>
+    .ban-image {
+        position: absolute;
+        height: 350px;
+        width: 250px;
+        object-fit: cover;
+    }
+
+    .content {
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        padding: 20px;
+        top: 55%;
+    }
+
+    p, h4, a {
+        color: white;
+    }
+
+    .order-button {
+        display: inline-block;
+        margin-top: 10px;
+        color: white;
+        background-color: #fbb710;
+        padding: 10px 20px;
+        font-size: 15px;
+        border: 1px solid #fbb710;
+    }
+
+        .order-button:hover {
+            background-color: black;
+            color: #fbb710 !important;
+            border: 1px solid #fbb710;
+            font-size: 15px;
+        }
+
+    .dat-coc-toi-thieu-content {
+        font-size: 13px;
+    }
+</style>

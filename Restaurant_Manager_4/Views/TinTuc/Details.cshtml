@@ -1,58 +1,47 @@
-﻿@model Restaurant_Manager_4.Models.tin_tuc
+﻿@model Restaurant_Manager_4.DTO.TinTucDTO
 
 @{
-    Layout = null;
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
 <body>
     <div>
-        <h4>tin_tuc</h4>
+        <h4>@Html.DisplayFor(model => model.TieuDe)</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.ngay_viet)
+                @Html.DisplayNameFor(model => model.NgayViet)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.ngay_viet)
+                @Html.DisplayFor(model => model.NgayViet)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.tieu_de)
+                @Html.DisplayNameFor(model => model.NoiDung)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.tieu_de)
+                @Html.DisplayFor(model => model.NoiDung)
             </dd>
     
             <dt>
-                @Html.DisplayNameFor(model => model.noi_dung)
+                @Html.DisplayNameFor(model => model.TenNguoiViet)
             </dt>
     
             <dd>
-                @Html.DisplayFor(model => model.noi_dung)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.user.ten_nguoi_dung)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.user.ten_nguoi_dung)
+                @Html.DisplayFor(model => model.TenNguoiViet)
             </dd>
     
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Sửa tin tức này", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Quay lại danh sách tin tức", "Index")
     </p>
 </body>
 </html>

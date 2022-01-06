@@ -27,11 +27,11 @@ namespace Restaurant_Manager_4.Controllers
         }
 
         //Order Now
-        public ActionResult OrderNow (int id)
+        public ActionResult OrderNow (int? id)
         {
             if(id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Index");
             }
             if (Session[strCart] == null)
             {
@@ -44,7 +44,7 @@ namespace Restaurant_Manager_4.Controllers
             else
             {
                 List<Cart> lsCart = (List<Cart>)Session[strCart];
-                int check = isExistingcheck(id);
+                int check = isExistingcheck(id.Value);
                 if (check == -1)
                 {
                     lsCart.Add(new Cart(db.mon_an.Find(id), 1));
@@ -81,13 +81,13 @@ namespace Restaurant_Manager_4.Controllers
             return View("Index");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            int check = isExistingcheck(id);
+            int check = isExistingcheck(id.Value);
             List<Cart> lsCart = (List<Cart>)Session[strCart];
             lsCart.RemoveAt(check);
             return View("Index");

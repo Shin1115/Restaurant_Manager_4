@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Restaurant_Manager_4.SerializableObjects.Enums
 {
-    public enum PhanMucType
+    public class PhanMucType
     {
-        Ban,
-        MonAn
+        public static string Ban = "BAN";
+        public static string MonAn = "MONAN";
     }
 }
