@@ -17,29 +17,8 @@
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     @Styles.Render("~/Content/asset/css/core-style.css")
     @Styles.Render("~/Content/asset/style.css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <!--Order-->
-    <link href="~/Content/assets-order/css/styles.css" rel="stylesheet" />
-    <!-- Core Style CSS -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <style>
-        .amado-btn {
-            min-width: 160px;
-            height: 55px;
-            color: #ffffff;
-            border: none;
-            border-radius: 0;
-            padding: 0 7px;
-            font-size: 18px;
-            line-height: 56px;
-            background-color: #fbb710;
-            font-weight: 400;
-        }
-
-            .amado-btn:hover {
-                color: #fff;
-            }
-    </style>
 </head>
 <body>
     <!-- Search Wrapper Area Start -->
@@ -118,11 +97,9 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
-                    }
-                        
-                    <li><a href="~/ShoppingCart/CheckOut">Checkout</a></li>
-
+                        <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
+                    }                   
+                    <li><a href="checkout.html">Checkout</a></li>
                     @if (ViewContext.RouteData.Values["Controller"].ToString() == "TinTuc")
                     {
                         <li class="active">@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
@@ -131,17 +108,28 @@
                     {
                         <li>@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
                     }
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+                    {
+                        if (ViewContext.RouteData.Values["Controller"].ToString() == "Ban")
+                        {
+                            <li class="active">@Html.ActionLink("Quản lý bàn", "Index", "Ban")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Quản lý bàn", "Index", "Ban")</li>
+                        }
+                    }
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
                 @if (System.Web.HttpContext.Current.User.Identity.Name != "")
                 {
-                    <a href="@Url.Action("LogOut","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
+                    <a href="@Url.Action("Index","DatBan")" class="btn amado-btn mb-15">Đặt bàn</a>
                 }
                 else
                 {
-                    <a href="@Url.Action("Login","Account")" class="btn amado-btn mb-15">Đặt bàn</a>
+                    <a href="@Url.Action("SignIn","Account")" class="btn amado-btn mb-15">Đăng ký</a>
                 }
                 @if (System.Web.HttpContext.Current.User.Identity.Name != "")
                 {
@@ -256,7 +244,5 @@
     <script src="~/Content/asset/js/plugins.js"></script>
     <!-- Active js -->
     <script src="~/Content/asset/js/active.js"></script>
-    <!--Order-->
-    <script src="~/Content/assets-order/js/scripts.js"></script>
 </body>
 </html>
