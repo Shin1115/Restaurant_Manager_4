@@ -14,11 +14,32 @@
     <title>Amado - Furniture Ecommerce Template | Home</title>
     <!-- Favicon  -->
     <link rel="icon" href="/Content/asset/img/core-img/favicon.ico">
-    <!-- Core Style CSS -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     @Styles.Render("~/Content/asset/css/core-style.css")
     @Styles.Render("~/Content/asset/style.css")
     @Scripts.Render("~/bundles/modernizr")
+    <!--Order-->
+    <link href="~/Content/assets-order/css/styles.css" rel="stylesheet" />
+    <!-- Core Style CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .amado-btn {
+            min-width: 160px;
+            height: 55px;
+            color: #ffffff;
+            border: none;
+            border-radius: 0;
+            padding: 0 7px;
+            font-size: 18px;
+            line-height: 56px;
+            background-color: #fbb710;
+            font-weight: 400;
+        }
+
+            .amado-btn:hover {
+                color: #fff;
+            }
+    </style>
 </head>
 <body>
     <!-- Search Wrapper Area Start -->
@@ -79,17 +100,29 @@
                     {
                         <li><a href="~/Home/Index">Trang chủ</a></li>
                     }
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="~/Home/Product_Detail">Product</a></li>
-                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Cart")
+
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "Order")
                     {
-                        <li class="active">@Html.ActionLink("Cart", "Index", "Cart")</li>
+                        <li class="active">@Html.ActionLink("Shop", "Index", "Order")</li>
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                    }                   
-                    <li><a href="checkout.html">Checkout</a></li>
+                        <li>@Html.ActionLink("Shop", "Index", "Order")</li>
+                    }
+
+                    <li><a href="~/Home/Product_Detail">Product</a></li>
+
+                    @if (ViewContext.RouteData.Values["Controller"].ToString() == "ShoppingCart")
+                    {
+                        <li class="active">@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
+                    }
+                        
+                    <li><a href="~/ShoppingCart/CheckOut">Checkout</a></li>
+
                     @if (ViewContext.RouteData.Values["Controller"].ToString() == "TinTuc")
                     {
                         <li class="active">@Html.ActionLink("Tin tức", "Index", "TinTuc")</li>
@@ -223,5 +256,7 @@
     <script src="~/Content/asset/js/plugins.js"></script>
     <!-- Active js -->
     <script src="~/Content/asset/js/active.js"></script>
+    <!--Order-->
+    <script src="~/Content/assets-order/js/scripts.js"></script>
 </body>
 </html>
