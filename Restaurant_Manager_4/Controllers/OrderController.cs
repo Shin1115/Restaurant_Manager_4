@@ -15,7 +15,7 @@ namespace Restaurant_Manager_4.Controllers
         public ActionResult Index(int? page)
         {
             var pageNumber = page ?? 1;
-            var pageSize = 6;
+            var pageSize = 8;
             List<mon_an> lstdatban = db.mon_an.ToList();
             var monanlst = db.mon_an.OrderByDescending(x => x.id).ToList().ToPagedList(pageNumber, pageSize);
             return View(monanlst);

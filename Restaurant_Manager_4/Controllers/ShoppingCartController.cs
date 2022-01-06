@@ -19,6 +19,7 @@ namespace Restaurant_Manager_4.Controllers
         // GET: Cart
         QuanLyNhaHangDataContext db = new QuanLyNhaHangDataContext();
         private string strCart = "Cart";
+        private string countCart = "Count";
         public ActionResult Index()
         {
             var user = db.users.Include(n => n.dat_ban);
@@ -51,6 +52,8 @@ namespace Restaurant_Manager_4.Controllers
                 else
                     lsCart[check].Soluong++;
                 Session[strCart] = lsCart;
+                //Session[countCart] = lsCart;
+
             }
             return View("Index");
         }
@@ -100,7 +103,7 @@ namespace Restaurant_Manager_4.Controllers
             ViewBag.total = 0;
             return View("CheckOut");
         }
-        public ActionResult ProcessOrder(FormCollection frc)
+        public ActionResult ProcessOrder()
         {
             return View("OrderSuccess");
         }
