@@ -15,7 +15,7 @@
     @foreach (var item in Model)
     {
         <div class="table">
-            <img class="ban-image" src="http://localhost:51747/@item.hinh_anh" alt="">
+            <img class="ban-image" src="@item.hinh_anh" alt="">
             <div class="content">
                 <p class="dat-coc-toi-thieu-content">Đặt cọc tối thiểu <span class="font-bold">@item.dat_coc_toi_thieu</span></p>
                 <h4>@item.ten_ban</h4>

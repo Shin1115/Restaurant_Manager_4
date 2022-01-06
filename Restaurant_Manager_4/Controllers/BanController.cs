@@ -33,7 +33,6 @@ namespace Restaurant_Manager_4.Controllers
                 );
         }
 
-        // GET: Ban
         public ActionResult Index()
         {
             using (QuanLyNhaHangDataContext quanLyNhaHangDataContext = new QuanLyNhaHangDataContext())

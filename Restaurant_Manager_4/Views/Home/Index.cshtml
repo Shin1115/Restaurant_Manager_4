@@ -1,118 +1,21 @@
-﻿@{
+﻿@model IEnumerable<Restaurant_Manager_4.Models.mon_an>
+
+@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="amado-pro-catagory clearfix">
-    @*@foreach (var item in Model)
-        {*@
-    <!-- Single Catagory -->
+    @foreach (var item in Model) {
     <div class="single-products-catagory clearfix">
         <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma1.jpg"  alt="">
-            <!-- Hover Content -->
+            <img src="@item.hinh_anh" alt="">
             <div class="hover-content">
                 <div class="line"></div>
-                <p>From $180</p>
-                <h4>Gà hấp</h4>
+                <p>From @item.gia</p>
+                <h4>@item.ten_mon_an</h4>
             </div>
         </a>
     </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma2.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $180</p>
-                <h4>Chân gà sả ớt</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma3.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $180</p>
-                <h4>Tôm hùm hấp</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma4.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $180</p>
-                <h4>Tôm hùm chiên</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma5.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $18</p>
-                <h4>Ốc bươu um</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma6.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $320</p>
-                <h4>Cua hoàng đế</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma7.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $318</p>
-                <h4>Gà chiên truyền thống</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma8.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $318</p>
-                <h4>Nai kiểu Pháp</h4>
-            </div>
-        </a>
-    </div>
-    <!-- Single Catagory -->
-    <div class="single-products-catagory clearfix">
-        <a href="shop.html">
-            <img src="~/Content/asset/img/bg-img/ma9.jpg" alt="">
-            <!-- Hover Content -->
-            <div class="hover-content">
-                <div class="line"></div>
-                <p>From $318</p>
-                <h4>Pizza hải sản</h4>
-            </div>
-        </a>
-    </div>
-    @*}*@
+    }
 </div>
