@@ -11,9 +11,9 @@
             }
             switch (roleId)
             {
-                case 1:
+                case 0:
                     return UserRole.Admin;
-                case 2:
+                case 1:
                     return UserRole.Employee;
                 default:
                     return UserRole.Customer;
